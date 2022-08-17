@@ -4,10 +4,10 @@ Progetto per il laboratorio di Architetture Software e Sicurezza Informatica
 Corso di laurea in Ingegneria Informatica e Automatica, Sapienza Università di Roma, A.A. 2021/2022
 
 ## Developers
-* [*Gianluca Sbandi*](https://github.com/gianlucasbandi)
-* [*Mattia Russo*](https://github.com/TiaRusky)
 * [*Alessia Angelone*](https://github.com/Alessia18)
 * [*Francesca Contento*](https://github.com/confra)
+* [*Mattia Russo*](https://github.com/TiaRusky)
+* [*Gianluca Sbandi*](https://github.com/gianlucasbandi)
 
 ## Written in
 * Ruby on Rails
