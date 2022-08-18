@@ -266,7 +266,8 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  #config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -310,4 +311,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {}
   OmniAuth.config.allowed_request_methods = %i[get]
+
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 end
