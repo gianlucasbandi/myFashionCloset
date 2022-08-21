@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  has_one_attached :avatar #profilePic
   has_one :creator #Non completamente vero
 
   # Include default devise modules. Others available are:
