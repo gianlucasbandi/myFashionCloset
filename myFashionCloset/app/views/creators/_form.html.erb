@@ -1,0 +1,54 @@
+<%= form_with(model: creator ,url:creators_new_path)  do |form| %>
+  <% if creator.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(creator.errors.count, "error") %> prohibited this creator from being saved:</h2>
+
+      <ul>
+        <% creator.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :firstName, style: "display: block" %>
+    <%= form.text_field :firstName %>
+  </div>
+
+  <div>
+    <%= form.label :lastName, style: "display: block" %>
+    <%= form.text_field :lastName %>
+  </div>
+
+  <div>
+    <%= form.label :birthday, style: "display: block" %>
+    <%= form.date_field :birthday %>
+  </div>
+
+  <div>
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.radio_button :gender, "M" %>
+    <%= form.label :M ,"M"%>
+    <%= form.radio_button :gender, "F" %>
+    <%= form.label :F ,"F"%>
+    <%= form.radio_button :gender, "O" %>
+    <%= form.label :O ,"Other"%>
+  </div>
+
+  <div>
+    <%= form.label :styleDesc, style: "display: block" %>
+    <%= form.text_field :styleDesc %>
+  </div>
+
+  <!--
+  <div>
+    <%= form.label :approved, style: "display: block" %>
+    <%= form.check_box :approved %>
+  </div>
+  -->
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
