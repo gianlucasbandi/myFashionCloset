@@ -1,0 +1,26 @@
+<h1>Questa è la pagina con le info utente di<%= @user.username%></h1>
+<%= form_with(model: @user ,url: users_personalInfo_path,method: :put)  do |f| %>
+    <div>
+        <%= f.label :Username, style: "display: block" %>
+        <%= f.text_field :username, value: @user.username %>
+    </div>
+
+    <div>
+        <%= f.label :Avatar, style: "display: block" %>
+        <% if @user.avatar.attached? %>
+            <img src="<%=(url_for(@user.avatar))%>">
+            <%= f.label :setAvatar, "Set your profile picture",style:"dispaly: block"%><br>
+            <%= f.file_field :avatar%>
+        <% else %>
+            <div>
+                <%= f.label :setAvatar, "Set your profile picture",style:"dispaly: block"%><br>
+                <%= f.file_field :avatar%>
+            </div>
+        <%end%>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+
+<% end %>

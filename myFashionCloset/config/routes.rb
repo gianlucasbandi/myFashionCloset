@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :capos
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  
-  root "outfits#index"
+  get "/users/personalInfo", to: "users#personalInfo"
+  put "/users/personalInfo", to: "users#personalInfoEdit"
 
-  get "/operations/top", to: "operations#top"
+  
+  #-----Home Page--------
+  root "outfits#index"
 
 end

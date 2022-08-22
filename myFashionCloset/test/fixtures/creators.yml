@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstName: MyString
+  lastName: MyString
+  birthday: 2022-08-21
+  gender: MyString
+  styleDesc: MyString
+  approved: false
+
+two:
+  firstName: MyString
+  lastName: MyString
+  birthday: 2022-08-21
+  gender: MyString
+  styleDesc: MyString
+  approved: false
