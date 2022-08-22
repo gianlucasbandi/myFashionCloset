@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @capo %>
+
+<div>
+  <%= link_to "Edit this capo", edit_capo_path(@capo) %> |
+  <%= link_to "Back to capos", capos_path %>
+
+  <%= button_to "Destroy this capo", @capo, method: :delete %>
+</div>
