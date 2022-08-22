@@ -1,0 +1,24 @@
+<h1>Questa è la pagina per ricercare creator</h1>
+
+<%= render "search/form"%>
+
+<%= pluralize(@creators.count, "Result") %>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th><%=sort_link(@query, :username, "Creators")%></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @creators.each do |creator|%>
+                <tr>
+                    <th><%=creator.username%></th>
+                    <th><%=link_to "Show profile", creator_path(creator.id)%>
+                </tr>
+            <%end%>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,4 @@
+<%= search_form_for(@query,url: search_path,method: :get) do |f| %>    <!--Search every creators_username that contains..-->
+    <%= f.search_field :username_cont,placeholder: "Search creators..." %> 
+    <%= f.submit "Search!" %>
+<% end %>

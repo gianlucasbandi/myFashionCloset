@@ -1,6 +1,6 @@
 class CreatorsController < ApplicationController
   #before_action :set_creator, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!#, except: [:, :about]
+  before_action :authenticate_user!, except: [:show]
 
 
   # GET /creators or /creators.json
@@ -10,6 +10,20 @@ class CreatorsController < ApplicationController
 
   # GET /creators/1 or /creators/1.json
   def show
+    begin
+      @creator = Creator.find(params[:id])
+
+      if @creator.approved == nil
+        flash[:alert] = "Searched creator doesn't exist"
+        redirect_to root_path
+      end
+      @user = User.where("creator_id = ?",params[:id])[0]
+
+    rescue => exception   #Doesn't exits
+      flash[:alert] = "Searched creator doesn't exist"
+      redirect_to root_path
+    end
+    
   end
 
   # GET /creators/new
