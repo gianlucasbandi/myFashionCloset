@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Capi</h1>
+
+<div id="capos">
+  <% @capos.each do |capo| %>
+    <table>
+    <tr><td><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%></td></tr>
+    </table>
+  <% end %>
+</div>

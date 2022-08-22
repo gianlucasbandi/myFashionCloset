@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_151049) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_140441) do
+  create_table "capos", force: :cascade do |t|
+    t.string "immagine"
+    t.string "nome"
+    t.string "descrizione"
+    t.string "categoria"
+    t.string "sito"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
