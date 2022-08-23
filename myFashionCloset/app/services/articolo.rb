@@ -27,7 +27,7 @@ class Articolo
         end 
 
         begin
-            response = HTTP.timeout(3).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=be7855dbfdmsh78d21456e4171a3p1258ddjsnf92a8521672f&store=US&offset=0&categoryId=2623&limit=48&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+            response = HTTP.timeout(3).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=be7855dbfdmsh78d21456e4171a3p1258ddjsnf92a8521672f&store=US&offset=0&categoryId=2623&categoryId=25423&limit=48&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
         rescue => e
             return false
         end
@@ -45,6 +45,27 @@ class Articolo
                 c.save!
             end
         end 
+
+        begin
+            response = HTTP.timeout(3).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=be7855dbfdmsh78d21456e4171a3p1258ddjsnf92a8521672f&store=US&offset=0&categoryId=25423&limit=48&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+        rescue => e
+            return false
+        end
+        results = response.parse['products']
+        categ = response.parse['categoryName']
+
+        results.each do |r|
+            if Capo.where('nome = ?', r['name']).group(:nome).count == {} 
+                c = Capo.new
+                c.sito = 'Asos'
+                c.categoria = categ
+                c.immagine = 'https://'+r['imageUrl']
+                c.nome = r['name']
+                c.descrizione = 'https://asos.com/'+r['url']
+                c.save!
+            end
+        end 
+
         return true
     end
 end

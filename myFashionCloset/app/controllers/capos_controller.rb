@@ -8,7 +8,9 @@ class CaposController < ApplicationController
     else
       @message = 'Failed'
     end
-    @capos = Capo.distinct.all
+    @q = Capo.ransack(params[:q])
+    #@capos = Capo.all
+    @capos = @q.result(distinct: true)
   end
 
   # GET /capos/1 or /capos/1.json

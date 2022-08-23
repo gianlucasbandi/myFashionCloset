@@ -2,10 +2,20 @@
 
 <h1>Capi</h1>
 
+<%= search_form_for(@q, url: capos_path,method: :get) do |form| %>
+  <%= form.search_field :nome_cont ,placeholder: "Search name..." %>
+  <br>
+  <%= form.search_field :categoria_cont ,placeholder: "Search category..." %>
+  <br>
+  <%= form.submit "Search!" %>
+<% end %>
+
+<br>
+
 <div id="capos">
   <% @capos.each do |capo| %>
     <table>
-    <tr><td><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%></td></tr>
+    <tr><td><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%></td></tr>
     </table>
   <% end %>
 </div>
