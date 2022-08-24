@@ -1,37 +1,64 @@
-<h2>Sign up</h2>
+<section class="vh-100 gradient-custom">
+  <div class="container py-2 h-1">
+    <div class="row d-flex justify-content-center align-items-center h-40">
+      <div class="col-10 col-md-1 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 3rem;">
+          <div class="card-body p-1 text-center">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase"><span style="font-family: Optima">Sign up </span></h2>
+              <p class="text-dark-50 mb-5"><span style="font-family: Optima;font-size:110%;letter-spacing: 1.5px;word-spacing: 2px;">Please enter your username, email and password!</span></p>
+              <link rel="stylesheet" href="../../../assets/stylesheets/form.css">
+              <div class="main">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "users/shared/error_messages", resource: resource %>
+              <div class="wrap-input100 validate-input m-b-20 alert-validate">
+                <span style="font-family: Optima">
+                  <%= f.text_field :username, autofocus: true, autocomplete: "username" , placeholder:"Username"%>
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input m-b-20 alert-validate">
+                <span style="font-family: Optima">
+                  <%= f.email_field :email,  autocomplete: "email", placeholder:"Email" %>
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input m-b-20 alert-validate">
+                <span style="font-family: Optima">
+                  <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password" %>
+                  <br>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                </span>
+              </div>
+              <div class="wrap-input100 validate-input m-b-20 alert-validate">
+                <span style="font-family: Optima">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Repeat Password" %>
+                </span>
+              </div>
 
-  <!--Username-->
-  <div class="field">
-    <%= f.label :username%><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+              <div class="actions">
+                <span style="font-family: Optima">
+                  <%= f.submit "Sign up", :class => "btn btn-success", :method => :get%>
+                </span>
+              </div>
+  
+            <% end %>
+
+            <hr class="my-4">
+
+            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                <div class="links">
+                <span style="font-family: Optima">
+                  <%= render "users/shared/links" %>
+                  </span>
+                </div>
+            </div>
+  
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email,  autocomplete: "email" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-  <div class="links">
-    <%= render "users/shared/links" %>
-  </div>
+</section>
