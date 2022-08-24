@@ -2,24 +2,28 @@
 .links{
     width: 90%;
     margin: 0 auto;
-    border: 2px solid red;
+    border: 2px solid rgb(255, 255, 255);
 }
 
 form{
-    border: 2px solid green;
     display: flex;
     flex-direction: column;
 }
 
 .field,
 .actions{
-    border: 2px solid pink;
     text-align: center;
     margin: 0.7em auto;
 }
 
 .field label{
-    font-weight: 700;
+    font-size: 18px;
+    color: #000;
+    opacity: 0.8;
+    font-weight: 400;
+    display:block;
+    text-align: left;
+
 }
 
 .links{
@@ -28,5 +32,31 @@ form{
     text-align: center;
 }
 
+.gradient-custom {
+    background: #a2ecc6;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgb(169, 239, 202), rgb(166, 249, 216));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, hsl(175, 78%, 40%), hsl(126, 96%, 81%))
+    }
 
+
+
+    .child {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .m-b-20 {
+        margin-bottom: 20px;
+      }
+
+      .wrap-input100 {
+        width: 100%;
+        position: relative;
+        background-color: #fff;
+        border-radius: 20px;
+      }
 

@@ -348,10 +348,15 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
+  margin: 5;
   font-family: inherit;
   font-size: inherit;
-  line-height: inherit;
+  border-radius: 7px;
+  padding: 8px;
+  max-width: 100%;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
+  flex-wrap: wrap;
 }
 
 button,
