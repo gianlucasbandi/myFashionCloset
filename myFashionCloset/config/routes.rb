@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   resources :capos
 
 
+  #------Outfits---------
+  get "/outfits/new", to: "outfits#new"
+  post "/outfits/new", to: "outfits#create"
+
+  
   #-----SearchBar------
   get "/search", to: "search#index"
   
