@@ -1,4 +1,5 @@
 class CaposController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_capo, only: %i[ show edit update destroy ]
 
   # GET /capos or /capos.json
