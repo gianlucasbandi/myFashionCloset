@@ -33,13 +33,13 @@ form{
 }
 
 .gradient-custom {
-    background: #a2ecc6;
+    background: #5edd9b;
     
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, rgb(169, 239, 202), rgb(166, 249, 216));
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, hsl(175, 78%, 40%), hsl(126, 96%, 81%))
+    background: linear-gradient(to right, hsla(175, 72%, 43%, 0.937), hsl(137, 60%, 68%))
     }
 
 
@@ -59,4 +59,3 @@ form{
         background-color: #fff;
         border-radius: 20px;
       }
-

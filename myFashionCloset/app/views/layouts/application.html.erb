@@ -11,9 +11,22 @@
   </head>
 
   <body>
+  <section class="vh-100 gradient-custom">
     <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "flash #{key}" %>
+    <div classs="container p-2">
+	<div class="row no-gutters">
+		<div class="col-lg-4 col-md-12 m-auto">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong><%= content_tag :div, value, class: "flash #{key}" %></strong>
+  <a href="/users/sign_in">
+  <button type="button" class="btn-close btn-close-black" data-bs-dismiss="alert" aria-label="Close"></button></a>
+</div>
+</div>
+</div>
     <% end %>
     <%= yield %>
+    </section>
   </body>
 </html>
+
+ 
