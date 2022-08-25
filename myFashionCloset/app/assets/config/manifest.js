@@ -4,3 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 
 //= link outfit_new.js
+//= link new_list_filter.js
