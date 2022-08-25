@@ -1,5 +1,5 @@
 class OutfitsController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
+    before_action :authenticate_user!, except: [:index,:search]
 
     def index
         
@@ -47,4 +47,11 @@ class OutfitsController < ApplicationController
         end
     end
 
+    #Endpoint to search capos without page reload
+    def search
+        @q = Capo.ransack(params)
+        @capos = @q.result(distinct: true)
+        render json:  @capos;       #Return a json to ajax callback
+    end
+    
 end

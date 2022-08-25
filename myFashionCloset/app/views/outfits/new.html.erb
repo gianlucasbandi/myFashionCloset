@@ -2,96 +2,18 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script> //Da spostare in un file a parte
-    $(document).ready(()=>{
-        $add_btn = $(".add-btn");
-        $capos_list = $(".capos-list");
-        $remove_btn = $(".remove-btn");
-        $submit_btn = $("#submit-btn");
-        $name = $("#name");
-        $description = $("#description");
 
-        $add_btn.on("click",(event)=>{
-            $btn = $(event.target);
-            $btn.prop("disabled",true)
-
-            id = $btn.attr("id")
-            imgUrl = $btn.closest("tr").find("td").first().attr("id");
-            description = $btn.closest("td").text();
-
-            $newCapo = $('<div class="field capo" id= '+id+'> \
-                            <div class = "capo-item" > \
-                                <img src = '+imgUrl+' width="130" height="130" > \
-                            </div> \
-                            <div class = "capo-item" >\
-                                <p>'+description+'</p>\
-                            </div> \
-                            <div class="capo-item"> \
-                                <button type ="button" class="remove-btn">Remove</button> \
-                            </div> \
-                        </div>');   
-
-            $capos_list.append($newCapo);
-            $remove_btn = $(".remove-btn");
-            
-            $remove_btn.on("click",(event)=>{       //on click remove selected capo from outfit
-                $target = $(event.target);
-                $target.closest(".field").remove();
-                btn_id = $target.closest(".capo").attr("id");
-                $("#"+btn_id).prop("disabled",false);
-            });
-        });
-
-        
-        $submit_btn.on("click",(event)=>{
-            event.preventDefault();
-            data = [];          //ids selected capos
-            $capos = $(".capo");
-
-            if($capos.length == 0){     
-                alert("No capo selected");  //Gestire meglio
-                return;
-            }
-
-            for( i = 0;i < $capos.length;i++){
-                data.push($capos[i].id)
-            }
-            
-            $.ajax({
-                type: "POST",
-                url : "/outfits/new",
-                data: {"ids":data,"name": $name.val(),"description": $description.val()},
-                credentials: "same-origin",
-                headers: {
-                    "X-CSRF-Token": getMetaValue("csrf-token")
-                },
-                success: (result)=>{
-                    if("done")window.location.href = "http://localhost:3000";
-                }
-            });
-            
-            
-        });
-
-        
-        function getMetaValue(name) {
-            const element = document.head.querySelector(`meta[name="${name}"]`)
-            return element.getAttribute("content")
-        }
-
-    });
-</script>
-
+<%= javascript_include_tag "outfit_new" %>
 
 <div class = "grid">
 
     <div class="search">
-        <%= search_form_for(@q, url: capos_path,method: :get) do |form| %>
-            <%= form.search_field :nome_cont ,placeholder: "Search name..." %>
+        <%= search_form_for(@q, url: outfits_new_path,method: :get) do |form| %>
+            <%= form.search_field :nome_cont ,placeholder: "Search name...",id: "nome-cont" %>
             <br>
-            <%= form.search_field :categoria_cont ,placeholder: "Search category..." %>
+            <%= form.search_field :categoria_cont ,placeholder: "Search category...",id: "categoria-cont"%>
             <br>
-            <%= form.submit "Search!" %>
+            <%= form.submit "Search!", id:"search-btn"%>
         <% end %>
 
         <br>
@@ -99,10 +21,10 @@
         <div id="capos">
             <% @capos.each do |capo| %>
                 <table>
-                <tr>
-                    <td id=<%=capo.immagine%>><p><%= image_tag(capo.immagine, size: "130") %></p></td>
-                    <td><%=capo.nome%><br/><br/><button  class = "add-btn" id = <%=capo.id%>>Add to outfit</button></td>
-                </tr>
+                    <tr>
+                        <td id=<%=capo.immagine%>><p><%= image_tag(capo.immagine, size: "130") %></p></td>
+                        <td><%=capo.nome%><br/><br/><button  class = "add-btn" id = <%=capo.id%>>Add to outfit</button></td>
+                    </tr>
                 </table>
             <% end %>
         </div>
@@ -113,12 +35,12 @@
             <div class="field">
                 <div class = "field-item">
                     <%= form.label :Name, style: "display: block" %>
-                    <%= form.text_field :name, id:"name" %>
+                    <%= form.text_field :name, id:"name",required: true %>
                 </div>
 
                 <div class = "field-item">
                     <%= form.label :Description, style: "display: block" %>
-                    <%= form.text_field :description, id:"description"%>
+                    <%= form.text_field :description, id:"description",required: true%>
                 </div>
                 
             </div>

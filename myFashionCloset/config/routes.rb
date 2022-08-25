@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #------Outfits---------
   get "/outfits/new", to: "outfits#new"
   post "/outfits/new", to: "outfits#create"
-
+  post "/outfits/search", to: "outfits#search"
   
   #-----SearchBar------
   get "/search", to: "search#index"
