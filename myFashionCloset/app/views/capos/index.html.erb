@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Capi</h1>
+<h1>Items</h1>
 
 <%= search_form_for(@q, url: capos_path,method: :get) do |form| %>
   <%= form.search_field :nome_cont ,placeholder: "Search name..." %>
@@ -11,11 +11,13 @@
 <% end %>
 
 <br>
-
 <div id="capos">
   <% @capos.each do |capo| %>
     <table>
-    <tr><td><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%></td></tr>
+    <tr class="<%= ('new' unless capo.categoria =~ /New in/)%>"><td><br><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%></td></tr>
     </table>
   <% end %>
 </div>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<%= javascript_include_tag 'new_list_filter' %>
