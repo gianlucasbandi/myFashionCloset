@@ -1,0 +1,2 @@
+class Guardaroba < ApplicationRecord
+end
