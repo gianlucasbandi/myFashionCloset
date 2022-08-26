@@ -1,0 +1,10 @@
+.content-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-item{
+    display: flex;
+    flex-direction: row;
+    gap: 0.4em;
+}

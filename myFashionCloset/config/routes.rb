@@ -22,8 +22,10 @@ Rails.application.routes.draw do
   post "/outfits/new", to: "outfits#create"
   post "/outfits/search", to: "outfits#search"
   
+
   #-----SearchBar------
   get "/search", to: "search#index"
+  post "/search", to: "search#update"
   
   
   #-----Home Page--------
