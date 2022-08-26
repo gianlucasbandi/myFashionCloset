@@ -1,7 +1,50 @@
 <p style="color: green"><%= notice %></p>
-<%= render @creator %>
+<!-- <%= render @creator %> -->
 
-<div>
-    <label><b>Username:</b></label>
-    <%= @user.username %>
+<div class = "main">
+    <div class = "main-header">
+        <div class = "creator-info">
+
+            <div class ="profile-pic">
+                <img src="<%=(url_for(@user.avatar))%>">
+            </div>
+
+            <div class = "personal-info">
+                <div class = "info-element">
+                      <p>
+                        <strong>First name:</strong>
+                        <%= @creator.firstName %>
+                    </p>
+                </div>
+
+                <div class = "info-element">
+                      <p>
+                        <strong>Last name:</strong>
+                        <%= @creator.lastName %>
+                    </p>
+                </div>
+
+                <div class = "info-element">
+                      <p>
+                        <strong>Style description:</strong>
+                        <%= @creator.styleDesc %>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class = "action">
+                <button>Follow/Unfollow</button>
+                <button>Report</button>
+            </div>
+        </div>
+    </div>
+
+    <div class = "main-content">
+        <% @outfits.each do |outfit|%>
+            <div class = "outfit">
+                <%= outfit.name %>
+            </div>
+        <%end%>
+    </div>
 </div>

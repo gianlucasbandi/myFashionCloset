@@ -17,7 +17,9 @@ class CreatorsController < ApplicationController
         flash[:alert] = "Searched creator doesn't exist"
         redirect_to root_path
       end
-      @user = User.where("creator_id = ?",params[:id])[0]
+      @user = User.where("creator_id = ?",params[:id])[0]   #Getting creator' info
+      @outfits = @creator.outfits;      #Getting all outfit
+      
 
     rescue => exception   #Doesn't exits
       flash[:alert] = "Searched creator doesn't exist"

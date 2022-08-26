@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_one_attached :avatar #profilePic
   has_one :creator #Non completamente vero
-
+  has_many :follows
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

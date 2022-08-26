@@ -18,7 +18,6 @@ $(document).ready(()=>{
                     "X-CSRF-Token": getMetaValue("csrf-token")
                 },
                 success: (result)=>{
-
                     $contentDiv.empty();
                     for(i = 0;i<result.length;i++){
                         $newItem = $('<div class = "content-item"><div class = "username-item"><p>'+result[i].username+'</p></div>\
@@ -27,6 +26,9 @@ $(document).ready(()=>{
                     }
                 }
             });
+        }
+        else{
+            $contentDiv.empty();
         }
     });
 
