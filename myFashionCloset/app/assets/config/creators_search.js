@@ -4,8 +4,9 @@ $(document).ready(()=>{
     $search_input = $("#search-input");
     $contentDiv.empty();
 
-    $search_btn.on("click",(event)=>{
-        event.preventDefault();
+
+    $search_input.on("input",(event)=>{
+        //event.preventDefault();
         var name = $search_input.val();
         if(name != ""){
             $.ajax({
