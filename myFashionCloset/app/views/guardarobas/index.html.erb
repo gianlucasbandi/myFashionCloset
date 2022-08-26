@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= current_user.username%>'s Wardrobe</h1>
+
+<div id="guardarobas">
+  <table>
+  <% @guardarobas.each do |guardaroba| %>
+    <tr><td><br><p><%= image_tag(guardaroba.immagine_capo, size: "130") %></p></td><td><%=link_to "Acquista su #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></td></tr>
+  <% end %>
+  </table>
+</div>

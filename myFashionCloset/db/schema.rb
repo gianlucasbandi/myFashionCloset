@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_171404) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -67,6 +67,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_171404) do
     t.index ["user_id"], name: "index_creators_on_user_id"
   end
 
+  create_table "guardarobas", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "immagine_capo"
+    t.string "nome_capo"
+    t.string "url"
+    t.string "sito"
+  end
+
   create_table "outfits", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -95,5 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_171404) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "creators", "users"
   add_foreign_key "creators", "users"
+  add_foreign_key "guardarobas", "users"
   add_foreign_key "outfits", "creators"
 end

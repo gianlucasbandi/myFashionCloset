@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :guardarobas
   
   #------Creators--------
   get "/creators/new", to: "creators#new"

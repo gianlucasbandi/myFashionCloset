@@ -14,7 +14,7 @@
 <div id="capos">
   <% @capos.each do |capo| %>
     <table>
-    <tr class="<%= ('new' unless capo.categoria =~ /New in/)%>"><td><br><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%></td></tr>
+    <tr class="<%= ('new' unless capo.categoria =~ /New in/)%>"><td><br><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%><br/><br/><%= button_to 'Add to your wardrobe', guardarobas_path, :params => {:id => capo.id} %></td></tr>
     </table>
   <% end %>
 </div>
