@@ -1,24 +1,32 @@
 <h1>Questa è la pagina per ricercare creator</h1>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%= javascript_include_tag "creators_search" %>
+<%=stylesheet_link_tag "search" %>
+
 <%= render "search/form"%>
-
+<!-- 
 <%= pluralize(@creators.count, "Result") %>
+-->
+<br>
+<div class = "search-result">
+    <div class = "content-header">
+        <!-- <%=sort_link(@query, :username, "Creators")%> -->
+    </div>  
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th><%=sort_link(@query, :username, "Creators")%></th>
-            </tr>
-        </thead>
+    <div class = "content-body">
+        <% @creators.each do |creator|%>
+            <div class = "content-item">
 
-        <tbody>
-            <% @creators.each do |creator|%>
-                <tr>
-                    <th><%=creator.username%></th>
-                    <th><%=link_to "Show profile", creator_path(creator.id)%>
-                </tr>
-            <%end%>
-        </tbody>
-    </table>
+                <div class = "username-item">
+                    <p><%=creator.username%></p>
+                </div>
+
+                <div class = "show-item">
+                    <p><%=link_to "Show profile",creator_path(creator.id)%></p>
+                </div>
+            
+            </div>
+        <%end%>
+    </div>
 </div>
