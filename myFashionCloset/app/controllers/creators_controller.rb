@@ -17,9 +17,10 @@ class CreatorsController < ApplicationController
         flash[:alert] = "Searched creator doesn't exist"
         redirect_to root_path
       end
+      @current_user = current_user
       @user = User.where("creator_id = ?",params[:id])[0]   #Getting creator' info
-      @outfits = @creator.outfits;      #Getting all outfit
-      
+      @outfits = @creator.outfits;      #Getting creator' outfit
+      @followed = !(@creator.follows.where("user_id = ?",@current_user.id).empty?)
 
     rescue => exception   #Doesn't exits
       flash[:alert] = "Searched creator doesn't exist"
@@ -88,6 +89,21 @@ class CreatorsController < ApplicationController
     end
   end
 
+  
+  def follow
+    @creator = Creator.find(params[:id])
+    @user = current_user
+    @follow = Follow.new(user_id: @user.id,creator_id: @creator.id)
+    @follow.save!
+  end
+
+  def unfollow
+    @creator = Creator.find(params[:id])
+    @user = current_user
+    Follow.where("creator_id = ? and user_id = ?",@creator.id,@user.id).destroy_all
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_creator
@@ -98,4 +114,6 @@ class CreatorsController < ApplicationController
     def creator_params
       params.require(:creator).permit(:firstName, :lastName, :birthday, :gender, :styleDesc, :approved)
     end
+
+
 end

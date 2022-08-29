@@ -1,3 +1,6 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%= javascript_include_tag "creator_show" %>
+
 <p style="color: green"><%= notice %></p>
 <!-- <%= render @creator %> -->
 
@@ -33,8 +36,15 @@
 
             </div>
 
-            <div class = "action">
-                <button>Follow/Unfollow</button>
+            <div class = "action" id= "<%=@creator.id%>">
+                <% if @followed%>
+                    <button id ="unfollow-btn">Unfollow</button>
+                    <button id ="follow-btn" style = "display:none">Follow</button>
+
+                <%else %>
+                    <button id ="unfollow-btn" style = "display:none">Unfollow</button>
+                    <button id ="follow-btn" >Follow</button>
+                <%end%>
                 <button>Report</button>
             </div>
         </div>

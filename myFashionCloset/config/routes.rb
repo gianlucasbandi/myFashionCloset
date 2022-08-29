@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get "/creators/new", to: "creators#new"
   post "/creators/new", to: "creators#create"
   get  "/creators/:id", to: "creators#show", as: :creator
-  
+  post "/creators/:id/follow", to: "creators#follow", as: "follow_creator"
+  post "creators/:id/unfollow", to: "creators#unfollow", as:"unfollow_creator"
  
   #-------Users----------
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
