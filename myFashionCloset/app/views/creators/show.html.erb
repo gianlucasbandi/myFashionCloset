@@ -58,7 +58,7 @@
     <div class = "main-content">
         <% @outfits.each do |outfit|%>
             <div class = "outfit">
-                <%= outfit.name %>
+                <%= link_to outfit.name,show_outfit_path(outfit.id)%>
             </div>
         <%end%>
     </div>

@@ -1,0 +1,17 @@
+<h1>Outfit '<%=@outfit.name%>' by <%=@user.username%></h1>
+
+<div class = "outfit">
+     <% @capos.each do |capo|%>
+        <div class = "capo">
+
+            <div class = "capo-pic">
+                <%= image_tag(capo.immagine, size: "130") %>
+            </div>
+
+            <div class = "capo-info">
+                <p class = "capo-name"><%=capo.nome%></p>
+                <p class = "shop-link"><%=link_to "Buy on #{capo.sito}", capo.descrizione%></p>
+            </div>
+        </div>
+     <%end%>
+</div>
