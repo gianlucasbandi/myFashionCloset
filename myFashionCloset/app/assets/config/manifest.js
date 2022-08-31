@@ -10,3 +10,4 @@
 //= link new_list_filter.js
 
 //= link creator_show.js
+

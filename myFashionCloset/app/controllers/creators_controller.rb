@@ -89,7 +89,7 @@ class CreatorsController < ApplicationController
     end
   end
 
-  
+  #A user follow a new creator
   def follow
     @creator = Creator.find(params[:id])
     @user = current_user
@@ -97,12 +97,25 @@ class CreatorsController < ApplicationController
     @follow.save!
   end
 
+  #user unfollow a creator
   def unfollow
     @creator = Creator.find(params[:id])
     @user = current_user
     Follow.where("creator_id = ? and user_id = ?",@creator.id,@user.id).destroy_all
   end
 
+  #user reported a creator
+  def report
+    @creator = Creator.find(params[:id])
+    @user = current_user
+    @report = Report.new(about: params[:about],description: params[:description],user_id: @user.id, creator_id: @creator.id)
+    if @report.save!    #Da rivedere
+      "ok"
+    else
+      "ko"
+    end
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

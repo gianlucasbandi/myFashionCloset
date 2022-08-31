@@ -1,5 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <%= javascript_include_tag "creator_show" %>
+
 
 <p style="color: green"><%= notice %></p>
 <!-- <%= render @creator %> -->
@@ -45,7 +50,7 @@
                     <button id ="unfollow-btn" style = "display:none">Unfollow</button>
                     <button id ="follow-btn" >Follow</button>
                 <%end%>
-                <button>Report</button>
+                <button  data-toggle="modal" data-target="#modalReport">Report</button>
             </div>
         </div>
     </div>
@@ -57,4 +62,36 @@
             </div>
         <%end%>
     </div>
+</div>
+
+
+
+<!--Report Modal -->
+<div class="modal fade" id="modalReport" tabindex="-1" role="dialog" aria-labelledby="modalReportTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalReportTitle">Report</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class = "form-item">
+                <input type = "text" id ="inputAbout" placeholder="About" required>
+            </div>
+
+            <div class = "form-item">
+                <input type ="text" id = "inputDescription" placeholder ="Description" required>
+            </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id = "report-btn">Report!</button>
+      </div>
+    </div>
+  </div>
 </div>
