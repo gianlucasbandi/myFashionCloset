@@ -1,0 +1,44 @@
+/*---- Header content ------*/
+.header{
+    display: flex;
+    flex-direction: row;
+}
+
+.header h1{
+    margin: auto auto;
+}
+
+.avatar{
+    vertical-align: middle;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+}
+
+/*----- Main content -----*/
+.outfit{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.capo{
+    width: 80%;
+    margin: 0.3em auto;
+    display: grid;
+    grid-template-areas: 
+                    "pic info"
+                    "pic info";
+    grid-template-columns: 1fr 4.5fr;
+}
+
+.capo-pic{
+    grid-area: pic;
+}
+
+.capo-info{
+    grid-area :info;
+    text-align: left;
+    margin: auto 0;
+}

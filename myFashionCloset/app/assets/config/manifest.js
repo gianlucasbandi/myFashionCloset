@@ -11,3 +11,4 @@
 
 //= link creator_show.js
 
+//= link_directory ../stylesheets/outfit .css
