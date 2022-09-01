@@ -1,0 +1,12 @@
+/******** Navbar ******/
+#navbarNavDropdown{
+    flex-direction: row-reverse;
+    gap: 1em;
+}
+/****** Avatar *****/
+.avatar{
+    vertical-align: middle;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
