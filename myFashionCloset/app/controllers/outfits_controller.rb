@@ -2,6 +2,20 @@ class OutfitsController < ApplicationController
     before_action :authenticate_user!, except: [:index,:search]
 
     def index
+        if user_signed_in?  
+            @user = current_user
+            @followedCreators = @user.followedCreators      
+
+            @followedOutfits = Array.new
+            @followedCreators.each do |creator|         #Getting recent outfit from followed creators
+                item = creator.outfits.order(created_at: :desc).take(2)
+                item.each do |i|
+                    @followedOutfits.push(i)
+                end  
+            end
+
+        end
+            @recentOutfits = Outfit.order(created_at: :desc)  #Getting recent outfit posted
 
     end
 

@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_one_attached :avatar #profilePic
-  has_one :creator #Non completamente vero
+  has_one_attached :avatar        #profilePic
+  has_one :creator                #Non completamente vero
   has_many :follows
+  has_many :followedCreators, through: :follows, source: :creator
   has_many :reports
   
   # Include default devise modules. Others available are:

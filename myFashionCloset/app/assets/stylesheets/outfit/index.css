@@ -1,0 +1,11 @@
+/******* Card Outfit *****/
+.card-header,
+.profile-pic{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.outfit-name{
+    border: 2px solid red;
+}
