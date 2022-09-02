@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :guardarobas
+  
+  #-----Guardarobas------
+  get "/guardarobas", to: "guardarobas#index", as: "guardarobas"
+  post "/guardarobas", to: "guardarobas#create" 
+  get "/guardarobas/:id", to: "guardarobas#show", as: "guardaroba"
+  delete "/guardarobas/:id", to: "guardarobas#destroy"
   
   #------Creators--------
   get "/creators/new", to: "creators#new"
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
 
 
   #----------Capos-----------
-  resources :capos
+  get "/capos", to: "capos#index", as: "capos"
 
 
   #------Outfits---------
