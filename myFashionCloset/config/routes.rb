@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
 
   #----------Capos-----------
-  resources :capos
+  get "/capos", to: "capos#index", as: "capos"
 
 
   #------Outfits---------
