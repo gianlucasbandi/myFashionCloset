@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   get "/outfits/new", to: "outfits#new"
   post "/outfits/new", to: "outfits#create"
   post "/outfits/search", to: "outfits#search"
-  get "/outfits/:id", to: "outfits#show", as: "show_outfit"   
+  get "/outfits/:id", to: "outfits#show", as: "show_outfit"
+  delete "/outfits/:id", to: "outfits#destroy"  
 
   #-----SearchBar------
   get "/search", to: "search#index"

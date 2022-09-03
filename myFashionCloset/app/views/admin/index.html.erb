@@ -102,3 +102,13 @@
    <% end %> 
 </div>
 
+<h1>Manage outfits</h1>
+<br>
+<div class = "main-content">
+    <table>
+    <% @outfits.each do |outfit|%>
+        <tr><td><%=link_to "#{outfit.name} by #{User.where(creator_id: outfit.creator_id)[0].username}", show_outfit_path(outfit.id)%></td><td><%= button_to "Remove", show_outfit_path(outfit.id), method: :delete %></td></tr>
+    <%end%>
+    </table>
+</div>
+

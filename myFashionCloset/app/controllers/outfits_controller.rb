@@ -74,6 +74,16 @@ class OutfitsController < ApplicationController
         end
     end
 
+    def destroy
+        @outfit = Outfit.find(params[:id])
+        @outfit.destroy
+
+        respond_to do |format|
+            format.html { redirect_to admin_url, notice: "Outfit was successfully deleted." }
+            format.json { head :no_content }
+        end
+    end
+
     #Endpoint to search capos without page reload
     def search
         @q = Capo.ransack(params)
