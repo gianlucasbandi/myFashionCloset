@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "/creators/new", to: "creators#new"
   post "/creators/new", to: "creators#create"
   get  "/creators/:id", to: "creators#show", as: :creator
+  post "/creators/:id", to: "creators#accept"
+  delete "creators/:id", to: "creators#destroy"
   post "/creators/:id/follow", to: "creators#follow", as: "follow_creator"
   post "creators/:id/unfollow", to: "creators#unfollow", as:"unfollow_creator"
   post "creators/:id/report", to: "creators#report"
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
   get "/users/personalInfo", to: "users#personalInfo"
   put "/users/personalInfo", to: "users#personalInfoEdit"
 
+  #-------Admin----------
+  get "/admin", to: "admin#index"
+  delete "/admin", to: "creators#destroy"
 
   #----------Capos-----------
   get "/capos", to: "capos#index", as: "capos"

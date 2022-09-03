@@ -56,6 +56,7 @@ gem "http"
 gem 'uri'
 gem 'openssl'
 gem "json"
+gem "cancan"
 
 # Use Sass to process CSS
 # gem "sassc-rails"
