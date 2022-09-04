@@ -1,22 +1,107 @@
 class OutfitsController < ApplicationController
-    before_action :authenticate_user!, except: [:index,:search]
+    before_action :authenticate_user!, except: [:index,:search,:load,:renderHTML]
 
     def index
         if user_signed_in?  
             @user = current_user
-            @followedCreators = @user.followedCreators      
 
-            @followedOutfits = Array.new
-            @followedCreators.each do |creator|         #Getting recent outfit from followed creators
-                item = creator.outfits.order(created_at: :desc).take(2)
-                item.each do |i|
-                    @followedOutfits.push(i)
-                end  
+            #Take first 3 recent post from followed Creators
+            @followedOutfits = Outfit.where(creator_id:@user.followedCreator_ids).order(created_at: :desc).take(3)
+        end
+            #Getting recent outfit posted
+            @recentOutfits = Outfit.order(created_at: :desc).take(3)                                 
+
+    end
+
+    #Load more content when user scroll down the homepage (post via ajax)
+    def load
+        @followedOutfits
+
+        if user_signed_in?
+            @user = current_user
+            if(params[:lastIsFollowed] == "true")
+                #Take first 3 recent post from followed Creators
+                @followedOutfits = Outfit.where(creator_id:@user.followedCreator_ids).where("id < ?",params[:last]).order(created_at: :desc).take(3)
+                if(@followedOutfits.length != 0)
+                    render json: [@followedOutfits,true]
+                    return 
+                end            
+            end
+        end
+
+        @recentOutfits = Outfit.where("id < ?",params[:last]).order(created_at: :desc).take(3)
+        render json: [@recentOutfits,false]
+    end
+
+
+    #Take care of the rendering of the new content when load is called
+    def renderHTML
+        @outfit = Outfit.find(params[:id])
+
+        @html = '<div class="card text-center outfit" id = '+@outfit.id.to_s+'>
+        <div class="card-header">
+            <div class = "profile-pic">
+                <a href = "'+creator_path(@outfit.creator.id)+'">
+                    <img class = "avatar" src="'+(url_for(@outfit.creator.user.avatar))+'">
+                </a>
+                <p>'+@outfit.creator.user.username+'</p>
+            </div>
+
+            <div class = "outfit-name">
+                <p>'+@outfit.name+'</p>
+            </div>
+
+        </div>
+
+        <div class="card-body"> 
+            <div id = "carousel'+@outfit.id.to_s+'" class = "carousel slide" data-ride="carousel">
+                <div class = "carousel-inner">'
+
+        @outfit.capos.each_with_index do |capo,index|
+            if index == 0
+                @html = @html+'<div class = "carousel-item active">
+                <img class="d-block w-100" src = '+url_for(capo.immagine)+'>
+                <div class="carousel-caption d-none d-md-block">
+                    <h6>'+capo.nome+'</h6>
+                </div>
+            </div>'
+
+            else
+                @html = @html+'<div class = "carousel-item">
+                    <img class="d-block w-100" src = '+url_for(capo.immagine)+'>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h6>'+capo.nome+'</h6>
+                    </div>
+                </div>'
             end
 
         end
-            @recentOutfits = Outfit.order(created_at: :desc)  #Getting recent outfit posted
+                
+                
+        @html = @html +'</div>
 
+                <a class="carousel-control-prev" href="#carousel'+@outfit.id.to_s+'" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel'+@outfit.id.to_s+'" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="card-footer text-muted">
+            <div class = "outfit-description">
+                '+@outfit.description+'
+            </div>
+            <div class = "outfit-date">
+                '+@outfit.created_at.to_s+'
+            </div>
+        </div>
+    </div>'
+
+        render json: {"string":@html}
     end
 
     def new

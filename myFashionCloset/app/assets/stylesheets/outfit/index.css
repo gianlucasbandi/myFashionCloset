@@ -1,11 +1,46 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /******* Card Outfit *****/
+.card{
+    width: 50%;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
 .card-header,
 .profile-pic{
     display: flex;
     flex-direction: row;
 }
 
-
 .outfit-name{
-    border: 2px solid red;
+    margin-left: 25%
+}
+
+.outfit-name p{
+    font-weight: 700;
+    font-size:large;
+}
+
+.carousel-item img{
+    width: auto;
+    height: 300px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    background-color: lightgray;
+    opacity: 0.4;
+}
+
+.carousel-caption h6{
+    font-weight: 900;
+}
+
+.outfit-date{
+    float: right;
 }

@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   get "/outfits/new", to: "outfits#new"
   post "/outfits/new", to: "outfits#create"
   post "/outfits/search", to: "outfits#search"
-  get "/outfits/:id", to: "outfits#show", as: "show_outfit"   
+  get "/outfits/:id", to: "outfits#show", as: "show_outfit"
+  post "/outfits/load", to: "outfits#load"  #Get via ajax new outfit to show on the homepage when scrolling down   
+  post "outfits/renderHTML/:id", to: "outfits#renderHTML" #Get new loaded outfit html
+
 
   #-----SearchBar------
   get "/search", to: "search#index"
