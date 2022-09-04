@@ -1,6 +1,7 @@
 class CreatorsController < ApplicationController
   #before_action :set_creator, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:show]
+  skip_before_action :verify_authenticity_token
 
 
   # GET /creators or /creators.json
@@ -32,7 +33,10 @@ class CreatorsController < ApplicationController
   # GET /creators/new
   def new
     @user = current_user
-    if @user.creator_id != nil    #Bisogna introdurre una gestione più accurata (Richiesta rifiutata,richiesta accettata etc)
+    if @user.creat == false #Bisogna introdurre una gestione più accurata (Richiesta rifiutata,richiesta accettata etc)
+      flash[:alert] = "Your request was refused because the description is not exhaustive or it does not comply with the site policy"
+      redirect_to root_path
+    elsif @user.creator_id != nil   #Bisogna introdurre una gestione più accurata (Richiesta rifiutata,richiesta accettata etc)
       flash[:alert] = "A request to become a creator has already been sent"
       redirect_to root_path
     else
@@ -81,10 +85,21 @@ class CreatorsController < ApplicationController
 
   # DELETE /creators/1 or /creators/1.json
   def destroy
-    @creator.destroy
+    @creator = Creator.find(params[:id])
+    authorize! :destroy, @creator, :message => "BEWARE: you are not
+    authorized to delete creators"
+
+    if @creator.present?
+        @creator.destroy
+    end
+
+    @user = User.where(id: @creator.user_id)[0]
+    @user.creator_id = nil;
+    @user.creat = false;
+    @user.save!
 
     respond_to do |format|
-      format.html { redirect_to creators_url, notice: "Creator was successfully destroyed." }
+      format.html { redirect_to admin_url, notice: "Creator was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -116,6 +131,22 @@ class CreatorsController < ApplicationController
     end
 
   end
+
+  def accept
+    @creator = Creator.find(params[:id])
+    @creator.approved = true
+    @creator.save!
+
+    @user = User.where(id: @creator.user_id)[0]
+    @user.creat = true
+    @user.save!
+
+    respond_to do |format|
+      format.html { redirect_to admin_url, notice: "Creator was successfully accepted." }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

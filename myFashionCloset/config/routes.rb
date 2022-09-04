@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "/creators/new", to: "creators#new"
   post "/creators/new", to: "creators#create"
   get  "/creators/:id", to: "creators#show", as: :creator
+  post "/creators/:id", to: "creators#accept"
+  delete "creators/:id", to: "creators#destroy"
   post "/creators/:id/follow", to: "creators#follow", as: "follow_creator"
   post "creators/:id/unfollow", to: "creators#unfollow", as:"unfollow_creator"
   post "creators/:id/report", to: "creators#report"
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
   get "/users/personalInfo", to: "users#personalInfo"
   put "/users/personalInfo", to: "users#personalInfoEdit"
 
+  #-------Admin----------
+  get "/admin", to: "admin#index"
+  delete "/admin", to: "creators#destroy"
 
   #----------Capos-----------
   get "/capos", to: "capos#index", as: "capos"
@@ -31,7 +36,7 @@ Rails.application.routes.draw do
   get "/outfits/:id", to: "outfits#show", as: "show_outfit"
   post "/outfits/load", to: "outfits#load"  #Get via ajax new outfit to show on the homepage when scrolling down   
   post "outfits/renderHTML/:id", to: "outfits#renderHTML" #Get new loaded outfit html
-
+  delete "/outfits/:id", to: "outfits#destroy"  
 
   #-----SearchBar------
   get "/search", to: "search#index"
