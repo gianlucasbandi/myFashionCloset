@@ -79,14 +79,20 @@
 
 </body>
 </html>
+<%= stylesheet_link_tag "guardaroba"%>
 <p style="color: green"><%= notice %></p>
 
-<h1><%= current_user.username%>'s Wardrobe</h1>
+<h1>&nbsp;<%= current_user.username%>'s Wardrobe</h1>
+<br>
 
+<div id="testo">
 <div id="guardarobas">
   <table>
   <% @guardarobas.each do |guardaroba| %>
-    <tr><td><br><p><%= image_tag(guardaroba.immagine_capo, size: "130") %></p></td><td><%=link_to "Acquista su #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></td></tr>
+  <div id="testo2">
+    <%= image_tag(guardaroba.immagine_capo, size: "130") %><div id="testo3"><br><%=link_to "Acquista su #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></div>
+  </div>
+  <br>
   <% end %>
   </table>
 </div>
