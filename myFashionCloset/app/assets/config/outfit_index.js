@@ -28,8 +28,9 @@ $(document).ready(()=>{
                                 "X-CSRF-Token": getMetaValue("csrf-token")
                                 },
                                 success :(html)=>{          //Getting the html to display outfit
-                                    console.log(html.string)
-                                    var $newItem = $(html.string)
+                                    //console.log(html.string)
+                                    var $newItem = $(html.string);
+                                    if(isFollowingOutfits)$newItem.addClass("followed");
                                     $("#main").append($newItem);
                                 }
                             });
