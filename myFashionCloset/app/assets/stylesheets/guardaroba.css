@@ -1,0 +1,29 @@
+#testo {
+    column-count:3;
+    text-align:justify;
+    column-fill: inherit;
+    align-items:center;
+    padding-left: 45px; 
+}
+
+#testo2 {
+    column-count: 2;
+    text-align:justify;
+    column-fill: inherit;
+}
+
+#testo3 {
+    column-count: 1;
+    text-align:justify;
+    column-fill: inherit;
+    padding-left: 0px; 
+}
+
+#box {
+    width: 1150px;
+    height: 1000px;
+    padding: 20px;
+    border: 0px solid;
+    margin: 20px;
+    align-items:center;
+}
