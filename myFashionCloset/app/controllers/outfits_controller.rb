@@ -4,6 +4,12 @@ class OutfitsController < ApplicationController
     def index
         if user_signed_in?  
             @user = current_user
+            @creator = @user.creator
+            @isCreator = false
+            if(@creator != nil && @creator.approved == true)
+                @isCreator = true
+            end
+            
 
             #Take first 3 recent post from followed Creators
             @followedOutfits = Outfit.where(creator_id:@user.followedCreator_ids).order(created_at: :desc).take(3)

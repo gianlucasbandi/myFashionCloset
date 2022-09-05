@@ -3,6 +3,17 @@
     flex-direction: row-reverse;
     gap: 1em;
 }
+
+.navbar-nav{
+    order: 99;
+    margin-right: auto;
+    margin-left: 1em;
+}
+
+.navbar-nav a{
+    margin: 0 0.5em;
+}
+
 /****** Avatar *****/
 .avatar{
     vertical-align: middle;
@@ -10,3 +21,4 @@
     height: 55px;
     border-radius: 50%;
 }
+
