@@ -3,8 +3,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 <!--Style -->
 <%= stylesheet_link_tag "outfit/show"%>
+
+
+<!-- My Script -->
+<%= javascript_include_tag "utils" %>
+
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -37,7 +43,7 @@
         <div class = "capo">
 
             <div class = "capo-pic">
-                <%= image_tag(capo.immagine, size: "130") %>
+                <%= image_tag(capo.immagine, size: "130",class: "capo-img") %>
             </div>
 
             <div class = "capo-info">

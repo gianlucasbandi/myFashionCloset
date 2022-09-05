@@ -11,6 +11,7 @@
 <!-- Javascript -->
 <%= javascript_include_tag "creator_show" %>
 
+
 <!-- Style -->
 <%= stylesheet_link_tag "common.css"%>
 <%= stylesheet_link_tag "creator/show.css"%>
@@ -106,7 +107,7 @@
         <div class = "creator-info">
 
             <div class ="profile-pic">
-                <img class = "avatar" src="<%=(url_for(@user.avatar))%>">
+                <img data-enlargable class = "avatar" src="<%=(url_for(@user.avatar))%>">
             </div>
 
             <div class = "personal-info">

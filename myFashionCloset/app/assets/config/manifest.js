@@ -13,6 +13,8 @@
 
 //= link outfit_index.js
 
+//= link utils.js
+
 //= link_directory ../stylesheets/outfit .css
 
 //= link_directory ../stylesheets/creator .css
