@@ -20,7 +20,7 @@ class CreatorsController < ApplicationController
       end
       @current_user = current_user
       @user = User.where("creator_id = ?",params[:id])[0]   #Getting creator' info
-      @outfits = @creator.outfits;      #Getting creator' outfit
+      @outfits = @creator.outfits.order(created_at: :desc);      #Getting creator' outfit
       @followed = !(@creator.follows.where("user_id = ?",@current_user.id).empty?)
 
     rescue => exception   #Doesn't exits

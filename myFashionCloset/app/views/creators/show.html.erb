@@ -11,9 +11,95 @@
 <!-- Javascript -->
 <%= javascript_include_tag "creator_show" %>
 
+<!-- Style -->
+<%= stylesheet_link_tag "common.css"%>
+<%= stylesheet_link_tag "creator/show.css"%>
 
 <p style="color: green"><%= notice %></p>
 <!-- <%= render @creator %> -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <% if user_signed_in?%>
+                    <a href="<%=capos_path%>">Capos</a>
+                    <% if @isCreator == true %>
+                        <a href="<%=outfits_new_path%>">New Outfit</a>
+                    <% else %>
+                        <a href="<%=creators_new_path%>">Become a creator</a>
+                    <%end%>
+                <% end%>
+            </ul>
+
+            <% if user_signed_in? %>            <!-- IF logged show profile pic ELSE login button -->
+                
+                <% if current_user.avatar.attached? %>
+                    <div class ="profile-pic">
+                        <div class = "dropdown">
+                            <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class = "avatar" src="<%=(url_for(current_user.avatar))%>">
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
+                                 <% if @isCreator == true %>
+                                    <li><a class="dropdown-item" href="<%=creator_path(@creator.id)%>">Show Profile</a></li>
+                                <%end%>
+                                <%if current_user.admin? %>
+                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                <%end%>
+                                <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
+                            </ul>
+                        </div>
+                    </div>
+                <%else%>
+                    <div class = "profile-pic">
+                        <div class ="dropdown">
+                            <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                </svg>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
+                                <% if @isCreator == true %>
+                                    <li><a class="dropdown-item" href="<%=creator_path(@creator.id)%>">Show Profile</a></li>
+                                <%end%>
+                                <%- if current_user.admin? %>
+                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                <%end%>
+                                <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                <%end%>
+            <%else%>
+                <a href="<%=new_user_session_path%>">
+                    <button class = "btn btn-light login-btn">Login</button>
+                </a>
+            <%end%>
+
+            <a href="<%=search_path%>" class = "search-btn">     <!-- Da rivedere -->
+                <button class = "btn btn-light ">Search...
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </a>
+
+            
+        </div>
+    </nav>
+
 
 <div class = "main">
     <div class = "main-header">
@@ -26,45 +112,73 @@
             <div class = "personal-info">
                 <div class = "info-element">
                       <p>
-                        <strong>First name:</strong>
-                        <%= @creator.firstName %>
+                        <strong><%= @creator.firstName %> <%= @creator.lastName %></strong>
                     </p>
                 </div>
 
                 <div class = "info-element">
                       <p>
-                        <strong>Last name:</strong>
-                        <%= @creator.lastName %>
-                    </p>
-                </div>
-
-                <div class = "info-element">
-                      <p>
-                        <strong>Style description:</strong>
                         <%= @creator.styleDesc %>
                     </p>
                 </div>
 
             </div>
+          </div>
 
-            <div class = "action" id= "<%=@creator.id%>">
-                <% if @followed%>
-                    <button id ="unfollow-btn">Unfollow</button>
-                    <button id ="follow-btn" style = "display:none">Follow</button>
+          <div class = "creator-username">
+            <h3><%=@user.username%>'s outfits</h3>
+          </div>
 
-                <%else %>
-                    <button id ="unfollow-btn" style = "display:none">Unfollow</button>
-                    <button id ="follow-btn" >Follow</button>
-                <%end%>
-                <button  data-toggle="modal" data-target="#modalReport">Report</button>
-            </div>
-        </div>
+          <div class = "creator-action" id= "<%=@creator.id%>">
+              <% if @followed%>
+                  <button id ="unfollow-btn"  class = "btn btn-secondary" >Unfollow</button>
+                  <button id ="follow-btn" class = "btn btn-secondary" style = "display:none">Follow</button>
+
+              <%else %>
+                  <button id ="unfollow-btn" class = "btn btn-secondary" style = "display:none">Unfollow</button>
+                  <button id ="follow-btn" class = "btn btn-secondary" >Follow</button>
+              <%end%>
+              <button  data-toggle="modal" data-target="#modalReport" class = "btn btn-danger">Report</button>
+          </div>
+        
+
     </div>
 
     <div class = "main-content">
         <% @outfits.each do |outfit|%>
             <div class = "outfit">
-                <%= link_to outfit.name,show_outfit_path(outfit.id)%>
+              <div class = "outfit-carousel">
+                <div id = "carousel<%=outfit.id%>" class = "carousel slide" data-ride="carousel">
+                    <div class = "carousel-inner">
+                      <% outfit.capos.each_with_index do |capo,index| %>
+                          <div class = "carousel-item <%="active" if index == 0%>">
+
+                              <img class="d-block w-100" src = <%=url_for(capo.immagine)%>>
+                              <div class="carousel-caption d-none d-md-block">
+                                  <h6><%=capo.nome%></h6>
+                              </div>
+
+                          </div>
+                      <%end%>
+                  </div>
+
+                  <a class="carousel-control-prev" href="#carousel<%=outfit.id%>" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carousel<%=outfit.id%>" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class = "outfit-info">
+                <h4 class = "outfit-name"><%=outfit.name%></h4>
+                <p class = "outfit-description"><%=outfit.description%></p>
+                <a href = "<%=show_outfit_path(outfit.id)%>">Show</a>
+              </div>
+
             </div>
         <%end%>
     </div>

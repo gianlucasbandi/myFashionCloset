@@ -1,0 +1,64 @@
+.main{
+    margin-top: 0.2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.creator-info{
+    flex-grow: 1;
+}
+
+.creator-username{
+    text-align: center;
+    flex-grow: 5;
+}
+
+.creator-action{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.personal-info{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main-content{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-item img{
+    width: auto;
+    height: 350px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    background-color: lightgray;
+    opacity: 0.4;
+}
+
+.outfit{
+    width: 70%;
+    margin: 0.3em auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.outfit-info{
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
