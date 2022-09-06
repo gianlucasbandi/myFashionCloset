@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   #----------Capos-----------
   get "/capos", to: "capos#index", as: "capos"
 
+  #----------Reports----------
+  delete "/reports/:id", to: "reports#destroy", as: "report"
+
 
   #------Outfits---------
   get "/outfits/new", to: "outfits#new"

@@ -6,6 +6,7 @@ class AdminController < ApplicationController
         authorized to access this page"
 
         @outfits = Outfit.all
+        @reports = Report.all
     end
 
 end

@@ -8,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Style -->
     <%= stylesheet_link_tag "common.css"%>
@@ -86,6 +89,7 @@
 </body>
 </html>
 
+<div id="box">
 <h1>Manage creators</h1>
 <br>
 
@@ -121,4 +125,37 @@
 <br>
 
 <h1>Manage reports</h1>
+<br>
+<div id="reports">
+    <% @reports.each do |report|%>
+         <h5>Report from: <%= "#{User.where(id: report.user_id)[0].username}" %></h5>
+         <h5>Creator: <%=link_to "#{User.where(creator_id: report.creator_id)[0].username}", creator_path(report.creator_id)%></h5>
+         <h5>Description: <%= "#{report.description}" %></h5>
+         <table><tr><td><button  data-toggle="modal" data-target="#modalRep" class = "btn btn-success">Accept</button></td><td><%= button_to "Decline", report_path(report.id), method: :delete, class: 'btn btn-danger'%></td><tr></table>
+         <br>
+         <br>
+
+         <!--Report Modal -->
+<div class="modal fade" id="modalRep" tabindex="-1" role="dialog" aria-labelledby="modalRepTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRepTitle">Report</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the creator <b><%="#{User.where(creator_id: report.creator_id)[0].username}"%></b>?
+      </div>
+      <div class="modal-footer">
+        <%= button_to "Yes", Creator.where(id: report.creator_id)[0], method: :delete, class: "btn btn-secondary"%>
+        <button type="button" class="btn btn-primary" id = "report-btn">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <%end%>
+</div>
+</div>
 
