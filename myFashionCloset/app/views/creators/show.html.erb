@@ -107,7 +107,10 @@
         <div class = "creator-info">
 
             <div class ="profile-pic">
-                <img data-enlargable class = "avatar" src="<%=(url_for(@user.avatar))%>">
+              <input type="checkbox" id="zoomCheck">
+                <label for="zoomCheck">
+                    <img data-enlargable class = "avatar" src="<%=(url_for(@user.avatar))%>">
+                </label>
             </div>
 
             <div class = "personal-info">

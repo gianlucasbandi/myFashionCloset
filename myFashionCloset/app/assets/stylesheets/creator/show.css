@@ -62,3 +62,20 @@
     flex-direction: column;
     justify-content: center;
 }
+
+
+/*Profile pic zoom*/
+input[type=checkbox] {
+    display: none;
+}
+  
+.container img {
+    margin: 100px;
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
+}
+  
+input[type=checkbox]:checked ~ label > img {
+    transform: scale(3.5);
+    cursor: zoom-out;
+}
