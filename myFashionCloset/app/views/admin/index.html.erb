@@ -97,7 +97,7 @@
   <% @creators.each do |creator| %>
     <% if creator.approved == true %>
     <%= render creator %>
-      <table><tr><td><%= button_to "Remove", creator, method: :delete %></td><tr></table>
+      <table><tr><td><%= button_to "Remove", creator, method: :delete, class: "btn btn-warning" %></td><tr></table>
     <% end %>
     <br>
     <br>
@@ -106,7 +106,7 @@
   <% @creators.each do |creator| %>
     <% if creator.approved == nil %>
     <%= render creator %>
-      <table><tr><td><%= button_to "Accept", creator, method: :accept %></td><td><%= button_to "Decline", creator, method: :delete %></td><tr></table>
+      <table><tr><td><%= button_to "Accept", creator, method: :accept, class: "btn btn-success" %></td><td><%= button_to "Decline", creator, method: :delete,  class: "btn btn-danger"%></td></tr></table>
     <% end %>
     <br>
    <% end %> 
@@ -114,10 +114,10 @@
 
 <h1>Manage outfits</h1>
 <br>
-<div class = "main-content">
+<div class = "outfits">
     <table>
     <% @outfits.each do |outfit|%>
-        <tr><td><%=link_to "#{outfit.name} by #{User.where(creator_id: outfit.creator_id)[0].username}", show_outfit_path(outfit.id)%></td><td><%= button_to "Remove", show_outfit_path(outfit.id), method: :delete %></td></tr>
+        <tr><td><%=link_to "#{outfit.name} by #{User.where(creator_id: outfit.creator_id)[0].username}", show_outfit_path(outfit.id)%>&nbsp;&nbsp;&nbsp;</td><td><%= button_to "Remove", show_outfit_path(outfit.id), method: :delete, class: "btn btn-warning" %></td></tr>
     <%end%>
     </table>
 </div>

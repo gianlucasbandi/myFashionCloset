@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "form.css"%>
+
 <section class="vh-100 gradient-custom">
   <div class="container py-2 h-1">
     <div class="row d-flex justify-content-center align-items-center h-50">
@@ -9,7 +11,6 @@
 
               <h2 class="fw-bold mb-2 text-uppercase"><span style="font-family: Optima">Log in </span></h2>
               <p class="text-dark-50 mb-5"><span style="font-family: Optima;font-size:110%;letter-spacing: 1.5px;word-spacing: 2px;">Please enter your username and password!</span></p>
-              <link rel="stylesheet" href="../../../assets/stylesheets/form.css">
               <div class="main">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="wrap-input100 validate-input m-b-20 alert-validate">
