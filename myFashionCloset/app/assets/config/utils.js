@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-
+    //Capo img zoom
     $('.capo-img').addClass('img-enlargable').click(function(){
         var src = $(this).attr('src');
         $('<div>').css({
