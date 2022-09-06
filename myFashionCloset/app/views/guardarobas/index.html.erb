@@ -33,10 +33,10 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                 <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -53,10 +53,10 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                 <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
