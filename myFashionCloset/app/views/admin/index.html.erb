@@ -14,6 +14,7 @@
 
     <!-- Style -->
     <%= stylesheet_link_tag "common.css"%>
+    <%= stylesheet_link_tag "guardaroba.css"%>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -89,7 +90,11 @@
 </body>
 </html>
 
-<div id="box">
+
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-4">
+<br>
 <h1>Manage creators</h1>
 <br>
 
@@ -111,7 +116,10 @@
     <br>
    <% end %> 
 </div>
+</div>
 
+<div class="col-4">
+<br>
 <h1>Manage outfits</h1>
 <br>
 <div class = "outfits">
@@ -158,4 +166,8 @@
     <%end%>
 </div>
 </div>
+</div>
+</div>
+
+
 
