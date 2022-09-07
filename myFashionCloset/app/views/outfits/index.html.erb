@@ -34,7 +34,8 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <% if user_signed_in?%>
-                    <a href="<%=capos_path%>">Capos</a>
+                    <a href="<%=root_path%>">Home</a>
+                    <a href="<%=capos_path%>">Items</a>
                     <% if @isCreator == true %>
                         <a href="<%=outfits_new_path%>">New Outfit</a>
                     <% else %>
