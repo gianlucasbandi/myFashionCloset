@@ -51,6 +51,9 @@
                                  <% if current_user.creat? == true %>
                                     <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
                                 <%end%>
+                                <%- if !current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=users_personalInfo_path%>">Avatar</a></li>
+                                <%end%>
                                 <%if current_user.admin? %>
                                     <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
@@ -72,6 +75,9 @@
                                 <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <% if current_user.creat?%>
                                     <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
+                                <%end%>
+                                <%- if !current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=users_personalInfo_path%>">Avatar</a></li>
                                 <%end%>
                                 <%- if current_user.admin? %>
                                     <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
