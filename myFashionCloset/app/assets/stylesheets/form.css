@@ -1,6 +1,6 @@
 .main,
 .links{
-    width: 90%;
+    width: 60%;
     margin: 0 auto;
     border: 2px solid rgb(255, 255, 255);
 }
@@ -39,8 +39,8 @@ form{
     background: -webkit-linear-gradient(to right, rgb(169, 239, 202), rgb(166, 249, 216));
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, hsla(36, 42%, 91%, 0.937), hsl(33, 76%, 84%))
-    }
+    background: linear-gradient(to right, hsl(0, 0%, 100%), hsl(0, 0%, 100%))
+}
 
 
 
