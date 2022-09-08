@@ -160,7 +160,7 @@ class OutfitsController < ApplicationController
             @user = User.find(@creator.user_id)
             @capos = @outfit.capos;
         rescue =>e
-            flash[:alert] = "Searched outfit doesn't exist"
+            flash[:warn] = "Searched outfit doesn't exist"
             redirect_to root_path
         end
     end

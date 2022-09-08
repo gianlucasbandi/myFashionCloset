@@ -88,6 +88,7 @@ class CreatorsController < ApplicationController
     @creator = Creator.find(params[:id])
     authorize! :destroy, @creator, :message => "BEWARE: you are not
     authorized to delete creators"
+    flash[:error] = "BEWARE: you are not authorized to delete creators"
 
     if @creator.present?
         @creator.destroy
@@ -99,7 +100,7 @@ class CreatorsController < ApplicationController
     @user.save!
 
     respond_to do |format|
-      format.html { redirect_to admin_url, notice: "Creator was successfully deleted." }
+      format.html { redirect_to admin_url, success: "Creator was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -142,7 +143,7 @@ class CreatorsController < ApplicationController
     @user.save!
 
     respond_to do |format|
-      format.html { redirect_to admin_url, notice: "Creator was successfully accepted." }
+      format.html { redirect_to admin_url, success: "Creator was successfully accepted." }
       format.json { head :no_content }
     end
   end

@@ -21,7 +21,7 @@ class GuardarobasController < ApplicationController
     @guardaroba.destroy
 
     respond_to do |format|
-      format.html { redirect_to guardarobas_url, notice: "Guardaroba was successfully destroyed." }
+      format.html { redirect_to guardarobas_url, success: "Guardaroba was successfully destroyed." }
       format.json { head :no_content }
     end
   end

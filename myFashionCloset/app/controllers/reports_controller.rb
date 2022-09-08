@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
         @report.destroy
 
         respond_to do |format|
-            format.html { redirect_to admin_url, notice: "Report was successfully removed." }
+            format.html { redirect_to admin_url, success: "Report was successfully removed." }
             format.json { head :no_content }
         end
     end

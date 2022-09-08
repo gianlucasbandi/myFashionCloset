@@ -11,19 +11,23 @@
   </head>
 
   <body>
-  <section class="gradient-custom">
+  <section class="gradient-custom" style="display:flex;flex-direction:column">
   
   <!-- Alert message-->
-  <% flash.each do |key, message| %>
-    <div class="alert <%= flash_class(key) %> alert-dismissible fade show text-center" role="alert">
-      <%= message %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  <% end %>
+  <div class="div-alert">
+    <% flash.each do |key, message| %>
+      <div class="alert <%= flash_class(key) %> alert-dismissible fade show text-center" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  </div>
 
-  <%= yield %>
+
+    <%= yield %>
+
   </section>
   </body>
 </html>

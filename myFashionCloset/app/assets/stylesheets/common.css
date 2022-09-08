@@ -1,4 +1,8 @@
 /******** Navbar ******/
+.navbar{
+    order: -1;
+}
+
 #navbarNavDropdown{
     flex-direction: row-reverse;
     gap: 1em;

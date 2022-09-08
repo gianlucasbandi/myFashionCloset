@@ -16,7 +16,7 @@ class UsersController < ApplicationController
             flash[:success] = "Profile updated"
             redirect_to root_path
         else
-            flash[:alert] = "Something gone wrong"  #Da gestire meglio
+            flash[:error] = "Something gone wrong"  #Da gestire meglio
             redirect_to root_path
         end
     end
