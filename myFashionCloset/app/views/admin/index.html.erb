@@ -135,16 +135,16 @@
 <h1>Manage reports</h1>
 <br>
 <div id="reports">
-    <% @reports.each do |report|%>
+    <% @reports.each_with_index do |report,index|%>
          <h5>Report from: <%= "#{User.where(id: report.user_id)[0].username}" %></h5>
          <h5>Creator: <%=link_to "#{User.where(creator_id: report.creator_id)[0].username}", creator_path(report.creator_id)%></h5>
          <h5>Description: <%= "#{report.description}" %></h5>
-         <table><tr><td><button  data-toggle="modal" data-target="#modalRep" class = "btn btn-success">Accept</button></td><td><%= button_to "Decline", report_path(report.id), method: :delete, class: 'btn btn-danger'%></td><tr></table>
+         <table><tr><td><button  data-toggle="modal" data-target="#modalRep<%=index.to_s%>" class = "btn btn-success">Accept</button></td><td><%= button_to "Decline", report_path(report.id), method: :delete, class: 'btn btn-danger'%></td><tr></table>
          <br>
          <br>
 
          <!--Report Modal -->
-<div class="modal fade" id="modalRep" tabindex="-1" role="dialog" aria-labelledby="modalRepTitle" aria-hidden="true">
+<div class="modal fade" id="modalRep<%=index.to_s%>" tabindex="-1" role="dialog" aria-labelledby="modalRepTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
