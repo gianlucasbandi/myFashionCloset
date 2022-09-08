@@ -29,8 +29,9 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <% if user_signed_in?%>
-                    <a href="<%=capos_path%>">Capos</a>
-                    <% if @isCreator == true %>
+                    <a href="<%=root_path%>">Home</a>
+                    <a href="<%=capos_path%>">Items</a>
+                    <% if current_user.creat? %>
                         <a href="<%=outfits_new_path%>">New Outfit</a>
                     <% else %>
                         <a href="<%=creators_new_path%>">Become a creator</a>
@@ -48,12 +49,12 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
-                                 <% if @isCreator == true %>
-                                    <li><a class="dropdown-item" href="<%=creator_path(@creator.id)%>">Show Profile</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                 <% if current_user.creat?%>
+                                    <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
                                 <%end%>
                                 <%if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -70,12 +71,12 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
-                                <% if @isCreator == true %>
-                                    <li><a class="dropdown-item" href="<%=creator_path(@creator.id)%>">Show Profile</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                <% if current_user.creat?%>
+                                    <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
                                 <%end%>
                                 <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -101,8 +102,8 @@
         </div>
     </nav>
 
-
 <div class = "main">
+  <br>
     <div class = "main-header">
         <div class = "creator-info">
 
@@ -130,7 +131,7 @@
           </div>
 
           <div class = "creator-username">
-            <h3><%=@user.username%>'s outfits</h3>
+            <h3><%=@user.username%>'s outfits&nbsp;&nbsp;</h3>
           </div>
 
           <div class = "creator-action" id= "<%=@creator.id%>">
@@ -142,7 +143,7 @@
                   <button id ="unfollow-btn" class = "btn btn-secondary" style = "display:none">Unfollow</button>
                   <button id ="follow-btn" class = "btn btn-secondary" >Follow</button>
               <%end%>
-              <button  data-toggle="modal" data-target="#modalReport" class = "btn btn-danger">Report</button>
+              &nbsp;&nbsp;<button  data-toggle="modal" data-target="#modalReport" class = "btn btn-danger">Report</button>
           </div>
         
 

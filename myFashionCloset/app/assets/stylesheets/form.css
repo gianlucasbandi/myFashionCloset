@@ -1,6 +1,6 @@
 .main,
 .links{
-    width: 90%;
+    width: 60%;
     margin: 0 auto;
     border: 2px solid red;
     
@@ -40,8 +40,8 @@ form{
     background: blue;
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: red;
-    }
+    background: linear-gradient(to right, hsl(0, 0%, 100%), hsl(0, 0%, 100%))
+}
 
 
 

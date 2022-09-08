@@ -11,6 +11,7 @@
 
     <!-- Style -->
     <%= stylesheet_link_tag "common.css"%>
+    <%= stylesheet_link_tag "guardaroba.css"%>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -20,7 +21,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-
+                <% if user_signed_in?%>
+                    <a href="<%=root_path%>">Home</a>
+                    <a href="<%=capos_path%>">Items</a>
+                    <% if current_user.creat? %>
+                        <a href="<%=outfits_new_path%>">New Outfit</a>
+                    <% else %>
+                        <a href="<%=creators_new_path%>">Become a creator</a>
+                    <%end%>
+                <% end%>
             </ul>
 
             <% if user_signed_in? %>            <!-- IF logged show profile pic ELSE login button -->
@@ -33,10 +42,12 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
-                                <li><a class="dropdown-item" href="#">Show Profile</a></li>
-                                <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                 <% if current_user.creat?%>
+                                    <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
+                                <%end%>
+                                <%if current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -53,10 +64,12 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
-                                <li><a class="dropdown-item" href="#">Show Profile</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                <% if current_user.creat?%>
+                                    <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
+                                <%end%>
                                 <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -87,8 +100,9 @@
 </html>
 <p style="color: green"><%= notice %></p>
 
-<h1>Items</h1>
+<h1>&nbsp;&nbsp;Items</h1>
 
+<div id="box">
 <%= search_form_for(@q, url: capos_path,method: :get) do |form| %>
   <%= form.search_field :nome_cont ,placeholder: "Search name..." %>
   <br>
@@ -101,9 +115,10 @@
 <div id="capos">
   <% @capos.each do |capo| %>
     <table>
-    <tr class="<%= ('new' unless capo.categoria =~ /New in/)%>"><td><br><p><%= image_tag(capo.immagine, size: "130") %></p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%><br/><br/><%= button_to 'Add to your wardrobe', guardarobas_path, :params => {:id => capo.id} %></td></tr>
+    <tr class="<%= ('new' unless capo.categoria =~ /New in/)%>"><td><br><p><%= image_tag(capo.immagine, size: "130") %>&nbsp;&nbsp;&nbsp;</p></td><td><%=capo.nome%><br/><br/><%=link_to "Acquista su #{capo.sito}", capo.descrizione%><br/><br/><%= button_to 'Add to your wardrobe', guardarobas_path, :params => {:id => capo.id}, class: "btn btn-light" %></td></tr>
     </table>
   <% end %>
+</div>
 </div>
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>

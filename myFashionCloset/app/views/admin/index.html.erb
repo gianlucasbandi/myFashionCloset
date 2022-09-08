@@ -14,6 +14,7 @@
 
     <!-- Style -->
     <%= stylesheet_link_tag "common.css"%>
+    <%= stylesheet_link_tag "guardaroba.css"%>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -36,10 +37,10 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                 <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -56,10 +57,10 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="http://127.0.0.1:3000/guardarobas">Wardrobe</a></li>
+                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                 <%- if current_user.admin? %>
-                                    <li><a class="dropdown-item" href="http://127.0.0.1:3000/admin">Manage Accounts</a></li>
+                                    <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
                                 <li><%= link_to 'Log Out', destroy_user_session_path,data: {turbo_method: :delete}, class:"dropdown-item"%></li>
                             </ul>
@@ -89,7 +90,11 @@
 </body>
 </html>
 
-<div id="box">
+
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-4">
+<br>
 <h1>Manage creators</h1>
 <br>
 
@@ -111,7 +116,10 @@
     <br>
    <% end %> 
 </div>
+</div>
 
+<div class="col-4">
+<br>
 <h1>Manage outfits</h1>
 <br>
 <div class = "outfits">
@@ -158,4 +166,8 @@
     <%end%>
 </div>
 </div>
+</div>
+</div>
+
+
 
