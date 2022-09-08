@@ -39,6 +39,9 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <li><a class="dropdown-item" href="#">Show Profile</a></li>
+                                <%- if !current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=users_personalInfo_path%>">Avatar</a></li>
+                                <%end%>
                                 <%- if current_user.admin? %>
                                     <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
@@ -59,6 +62,9 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
                                 <li><a class="dropdown-item" href="#">Show Profile</a></li>
+                                <%- if !current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=users_personalInfo_path%>">Avatar</a></li>
+                                <%end%>
                                 <%- if current_user.admin? %>
                                     <li><a class="dropdown-item" href="<%=admin_path(current_user.id)%>">Manage Accounts</a></li>
                                 <%end%>
