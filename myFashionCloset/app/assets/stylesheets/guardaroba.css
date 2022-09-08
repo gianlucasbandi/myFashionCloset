@@ -35,7 +35,11 @@
     border: 3px solid rgba(105, 106, 102, 0.441);
     border-radius: 3%;
     margin: 20px;
-    margin-left: 410px;
+    margin: 20px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin: -200px 0px 0px -200px;
     align-items:center;
     text-align: left;
     justify-content: center
@@ -48,7 +52,10 @@
     border: 3px solid rgba(105, 106, 102, 0.441);
     border-radius: 3%;
     margin: 20px;
-    margin-left: 410px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin: -200px 0px 0px -200px;
     align-items:center;
     text-align: left;
     justify-content: center

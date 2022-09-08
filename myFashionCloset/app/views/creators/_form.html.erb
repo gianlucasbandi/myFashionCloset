@@ -1,5 +1,7 @@
 <%= stylesheet_link_tag "guardaroba"%>
+<%= stylesheet_link_tag "common"%>
 
+<div class="testo-centrato">
 <div id="box2">
 <%= form_with(model: creator ,url:creators_new_path)  do |form| %>
   <% if creator.errors.any? %>
@@ -56,4 +58,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
 </div>
