@@ -65,7 +65,7 @@
 
 
 /*Profile pic zoom*/
-input[type=checkbox] {
+#zoomCheck{
     display: none;
 }
   
@@ -75,7 +75,7 @@ input[type=checkbox] {
     cursor: zoom-in;
 }
   
-input[type=checkbox]:checked ~ label > img {
+#zoomCheck:checked ~ label > img {
     transform: scale(3.5);
     cursor: zoom-out;
 }
