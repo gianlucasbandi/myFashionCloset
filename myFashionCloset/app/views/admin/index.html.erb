@@ -24,7 +24,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-
+                <% if user_signed_in?%>
+                    <a href="<%=root_path%>">Home</a>
+                <%end%>
             </ul>
 
             <% if user_signed_in? %>            <!-- IF logged show profile pic ELSE login button -->
@@ -37,9 +39,9 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
-                                <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                 <%- if !current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                    <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                     <li><a class="dropdown-item" href="<%=users_personalInfo_path%>">Avatar</a></li>
                                 <%end%>
                                 <%- if current_user.admin? %>
@@ -60,9 +62,9 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
-                                <li><a class="dropdown-item" href="#">Show Profile</a></li>
                                 <%- if !current_user.admin? %>
+                                    <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                    <li><a class="dropdown-item" href="#">Show Profile</a></li> 
                                     <li><a class="dropdown-item" href="<%=users_personalInfo_path%>">Avatar</a></li>
                                 <%end%>
                                 <%- if current_user.admin? %>

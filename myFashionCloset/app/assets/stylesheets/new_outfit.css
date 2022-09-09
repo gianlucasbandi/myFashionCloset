@@ -6,6 +6,7 @@
 .creation-form{
     border: 2px solid rgba(0, 0, 0, 0.185);
     text-align:center;
+    margin-right: 1em;
 }
 
 .capos-list{

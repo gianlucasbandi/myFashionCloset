@@ -23,10 +23,12 @@
             <ul class="navbar-nav">
                 <% if user_signed_in?%>
                     <a href="<%=root_path%>">Home</a>
-                    <a href="<%=capos_path%>">Items</a>
+                    <% if !current_user.admin? %>
+                        <a href="<%=capos_path%>">Items</a>
+                    <%end%>
                     <% if current_user.creat? %>
                         <a href="<%=outfits_new_path%>">New Outfit</a>
-                    <% else %>
+                    <% elsif !current_user.admin?%>
                         <a href="<%=creators_new_path%>">Become a creator</a>
                     <%end%>
                 <% end%>
@@ -42,8 +44,11 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
-                                 <% if current_user.creat?%>
+                            <%- if !current_user.admin? %>
+                                <% if !current_user.admin?%>
+                                    <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                <%end%>
+                                <% if current_user.creat?%>
                                     <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
                                 <%end%>
                                 <%- if !current_user.admin? %>
@@ -67,7 +72,9 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                <% if !current_user.admin?%>
+                                    <li><a class="dropdown-item" href="<%=guardarobas_path(current_user.id)%>">Wardrobe</a></li>
+                                <%end%>
                                 <% if current_user.creat?%>
                                     <li><a class="dropdown-item" href="<%=creator_path(current_user.creator_id)%>">Show Profile</a></li>
                                 <%end%>
@@ -106,9 +113,9 @@
 </html>
 <p style="color: green"><%= notice %></p>
 
-<h1>&nbsp;&nbsp;Items</h1>
+<h1>&nbsp;Items</h1>
 
-<div id="box">
+<div class="container-fluid">
 <%= search_form_for(@q, url: capos_path,method: :get) do |form| %>
   <%= form.search_field :nome_cont ,placeholder: "Search name..." %>
   <br>

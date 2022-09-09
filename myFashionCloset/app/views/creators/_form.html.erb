@@ -1,8 +1,11 @@
 <%= stylesheet_link_tag "guardaroba"%>
 <%= stylesheet_link_tag "common"%>
+<style>
+
+</style>
 
 <div class="testo-centrato">
-<div id="box2">
+<div id="cont">
 <%= form_with(model: creator ,url:creators_new_path)  do |form| %>
   <% if creator.errors.any? %>
     <div style="color: red">
@@ -17,20 +20,23 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :firstName, class:"form-label"%>&nbsp;
+    <%= form.label :firstName, class:"form-label"%>
     <%= form.text_field :firstName, class:"form-control"%>
+    <br>
   </div>
-  <br>
+  
   <div>
-    <%= form.label :lastName, class:"form-label"%>&nbsp;
+    <%= form.label :lastName, class:"form-label"%>
     <%= form.text_field :lastName, class:"form-control"%>
+    <br>
   </div>
-  <br>
+  
   <div>
-    <%= form.label :birthday, class:"form-label"%>&nbsp;
+    <%= form.label :birthday, class:"form-label"%>
     <%= form.date_field :birthday, class:"form-control"%>
+    <br>
   </div>
-  <br>
+ 
   <div>
     <%= form.label :gender%>&nbsp;&nbsp;
     <%= form.radio_button :gender, "M" %>
@@ -40,12 +46,13 @@
     <%= form.radio_button :gender, "O" %>
     <%= form.label :O ,"Other"%>
   </div>
-  <br>
+  
   <div>
-    <%= form.label :"Describe your style", class:"form-label"%>&nbsp;
+  <br>
+    <%= form.label :"Describe your style", class:"form-label"%>
     <%= form.text_area :message, size: "30x3", class:"form-control"%>
   </div>
-  <br>
+  
 
   <!--
   <div>
@@ -55,6 +62,7 @@
   -->
 
   <div class="testo-centrato">
+  <br>
     <%= form.submit %>
   </div>
 <% end %>
