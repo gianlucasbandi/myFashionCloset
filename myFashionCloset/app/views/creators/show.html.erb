@@ -154,7 +154,7 @@
           </div>
 
           <div class = "creator-action" id= "<%=@creator.id%>">
-            <% if @current_user.id != @creator.user_id%>
+            <% if @current_user!=nil && @current_user.id != @creator.user_id%>
               <% if @followed%>
                   <button id ="unfollow-btn"  class = "btn btn-secondary" >Unfollow</button>
                   <button id ="follow-btn" class = "btn btn-secondary" style = "display:none">Follow</button>

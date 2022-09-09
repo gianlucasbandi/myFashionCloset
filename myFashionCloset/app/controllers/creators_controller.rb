@@ -18,10 +18,17 @@ class CreatorsController < ApplicationController
         flash[:alert] = "Searched creator doesn't exist"
         redirect_to root_path
       end
-      @current_user = current_user
-      @user = User.where("creator_id = ?",params[:id])[0]   #Getting creator' info
-      @outfits = @creator.outfits.order(created_at: :desc);      #Getting creator' outfit
-      @followed = !(@creator.follows.where("user_id = ?",@current_user.id).empty?)
+
+      if(current_user!=nil)
+        @current_user = current_user
+        @user = User.where("creator_id = ?",params[:id])[0]   #Getting creator' info
+        @outfits = @creator.outfits.order(created_at: :desc);      #Getting creator' outfit
+        @followed = !(@creator.follows.where("user_id = ?",@current_user.id).empty?)
+      
+      else
+        @user = User.where("creator_id = ?",params[:id])[0]   #Getting creator' info
+        @outfits = @creator.outfits.order(created_at: :desc);      #Getting creator' outfit
+      end
 
     rescue => exception   #Doesn't exits
       flash[:alert] = "Searched creator doesn't exist"
