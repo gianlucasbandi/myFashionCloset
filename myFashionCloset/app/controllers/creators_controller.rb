@@ -88,7 +88,6 @@ class CreatorsController < ApplicationController
     @creator = Creator.find(params[:id])
     authorize! :destroy, @creator, :message => "BEWARE: you are not
     authorized to delete creators"
-    flash[:error] = "BEWARE: you are not authorized to delete creators"
 
     if @creator.present?
         @creator.destroy
@@ -133,6 +132,7 @@ class CreatorsController < ApplicationController
 
   end
 
+  #POST accettazione creator da parte dell'admin
   def accept
     @creator = Creator.find(params[:id])
     @creator.approved = true

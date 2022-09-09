@@ -113,21 +113,18 @@ class OutfitsController < ApplicationController
     def new
         @user = current_user
 
-        if @user.creator_id != nil && Creator.find(@user.creator_id).approved != true
-            flash[:alert] = "Only creators can post new outfits"
-            redirect_to root_path
-        else
-            @outfit = Outfit.new
-            @q = Capo.ransack(params[:q])
-            @capos = @q.result(distinct: true)
-        end
+        @outfit = Outfit.new
+        authorize! :new, @outfit, :message => "BEWARE: you are not
+        authorized to access this page"
+        @q = Capo.ransack(params[:q])
+        @capos = @q.result(distinct: true)
         
     end
 
     def create
         @user = current_user
 
-        if @user.creator_id != nil && Creator.find(@user.creator_id).approved != true
+        if @user.creator_id == nil && Creator.find(@user.creator_id).approved != true
             flash[:alert] = "Only creators can post new outfits"
             redirect_to root_path
 
@@ -167,6 +164,8 @@ class OutfitsController < ApplicationController
 
     def destroy
         @outfit = Outfit.find(params[:id])
+        authorize! :destroy, @outfit, :message => "BEWARE: you are not
+        authorized to access this page"
         @outfit.destroy
 
         respond_to do |format|

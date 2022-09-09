@@ -120,7 +120,7 @@
   <table>
   <% @guardarobas.each do |guardaroba| %>
   <div id="testo2">
-    <%= image_tag(guardaroba.immagine_capo, size: "130") %><div id="testo3"><br><%=link_to "Acquista su #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></div>
+    <%= image_tag(guardaroba.immagine_capo, size: "130") %><div id="testo3"><br><%=link_to "Buy on #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></div>
   </div>
   <br>
   <% end %>

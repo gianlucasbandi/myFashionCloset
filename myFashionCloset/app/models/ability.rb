@@ -7,20 +7,20 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.creat?
-      can :manage, :capo
-      can :manage, :guardaroba
-      can [:read, :create, :update], :creator
-      cannot :destroy, :creator
-      can :manage, :outfit
-      cannot :manage, :admin
+      can :manage, Capo
+      can :manage, Guardaroba
+      can [:read, :create, :update], Creator
+      cannot :destroy, Creator
+      can :manage, Outfit
+      cannot :manage, Admin
     else
-      can :manage, :capo
-      can :manage, :guardaroba
-      can [:read, :create], :creator
-      cannot :destroy, :creator
-      can :read, :outfit
-      cannot [:create, :update, :destroy], :outfit
-      cannot :manage, :admin
+      can :manage, Capo
+      can :manage, Guardaroba
+      can [:read, :create], Creator
+      cannot :destroy, Creator
+      can :read, Outfit
+      cannot [:create, :update, :destroy], Outfit
+      cannot :manage, Admin
     end
     #
     # The first argument to `can` is the action you are giving the user 

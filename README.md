@@ -20,4 +20,4 @@ Corso di laurea in Ingegneria Informatica e Automatica, Sapienza Università di 
 4) Use `rails db:migrate` and `rails db:seed`  
     -NOTE: To reset application's database run `rails db:reset` BEFORE `rails db:migrate`
 5) Start the server with `rails server`
-6) Open your browser and go to ``localhost:3000`` or ``127.0.0.1:3000``
+6) Open your browser and go to ``localhost:3000``

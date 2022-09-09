@@ -4,6 +4,8 @@ class ReportsController < ApplicationController
 
     def destroy
         @report = Report.find(params[:id])
+        authorize! :destroy, @report, :message => "BEWARE: you are not
+        authorized to access this page"
         @report.destroy
 
         respond_to do |format|
