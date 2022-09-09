@@ -57,7 +57,7 @@ class CreatorsController < ApplicationController
     @creator.user_id = @user.id
     
     if @creator.save
-      flash[:alert] = "Request sent correctly"
+      flash[:success] = "Request sent correctly"
       @user.update(creator_id: @creator.id)
       #format.html { redirect_to creator_url(@creator), notice: "Creator was successfully created." }
       #format.json { render :show, status: :created, location: @creator }
