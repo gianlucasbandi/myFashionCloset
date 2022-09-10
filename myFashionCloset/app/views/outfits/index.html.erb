@@ -136,7 +136,7 @@
                     <div class="card-header">
                         <div class = "profile-pic">
                             <a href = "<%=creator_path(outfit.creator.id)%>">
-                                <% if @user.avatar.attached? %>
+                                <% if outfit.creator.user.avatar != nil %>
                                     <img data-enlargable class = "avatar" src="<%=(url_for(outfit.creator.user.avatar))%>">
                                 <%else%>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -199,7 +199,7 @@
                     <div class="card-header">
                         <div class = "profile-pic">
                             <a href = "<%=creator_path(outfit.creator.id)%>">
-                                <% if @user.avatar.attached? %>
+                                <% if outfit.creator.user.avatar != nil %>
                                     <img data-enlargable class = "avatar" src="<%=(url_for(outfit.creator.user.avatar))%>">
                                 <%else%>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
