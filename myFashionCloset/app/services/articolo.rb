@@ -283,7 +283,7 @@ class Articolo
         capos.each do |c|
             c.save!
         end
-        
+
         return true
     end
 end
