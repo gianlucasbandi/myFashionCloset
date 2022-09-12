@@ -33,11 +33,18 @@ World(WithinHelpers)
 
 
 Given /^I am a registered user$/ do
-  @user = create(:user)
-  visit "login"
-  fill_in "email", :with => @user.email
-  fill_in "password", :with => @user.password
-  click_button('login').click
+  @user = User.new({
+             :email => "mattia@prova.it",
+             :password => "password",
+             :password_confirmation => "password",
+             :username => "TiaTest",
+             :creator_id => nil,
+             :admin => nil,
+             :creat => nil
+           })
+          
+  @user.save!
+
 end
 
 

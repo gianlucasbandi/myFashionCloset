@@ -71,6 +71,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'cucumber-rails-training-wheels'
   gem 'rspec-expectations'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do

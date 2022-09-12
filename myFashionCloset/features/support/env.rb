@@ -5,6 +5,10 @@
 # files.
 
 require 'cucumber/rails'
+require 'rspec/expectations'
+require 'capybara/rails'
+require 'capybara/cucumber'
+
 
 # frozen_string_literal: true
 
