@@ -31,6 +31,15 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given /^I am a registered user$/ do
+  @user = create(:user)
+  visit "login"
+  fill_in "loginemail", :with => @user.email
+  fill_in "loginpassword", :with => @user.password
+  click_button('loginbutton').click
+end
+
+
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
