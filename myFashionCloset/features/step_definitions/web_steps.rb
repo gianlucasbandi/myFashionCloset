@@ -31,12 +31,13 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+
 Given /^I am a registered user$/ do
   @user = create(:user)
   visit "login"
-  fill_in "loginemail", :with => @user.email
-  fill_in "loginpassword", :with => @user.password
-  click_button('loginbutton').click
+  fill_in "email", :with => @user.email
+  fill_in "password", :with => @user.password
+  click_button('login').click
 end
 
 
