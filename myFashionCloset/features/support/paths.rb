@@ -27,7 +27,9 @@ module NavigationHelpers
     
     when /^the personalInfo/
       users_personalInfo_path
-    
+
+    when /^the search/
+      search_path
     else
       begin
         page_name =~ /^the (.*) page$/

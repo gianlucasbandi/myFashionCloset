@@ -31,6 +31,10 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+And /^I should see the results$/ do
+  visit search_path
+end
+
 
 Given /^I am a registered user$/ do
   @user = User.new({
