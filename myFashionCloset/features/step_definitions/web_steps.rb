@@ -47,6 +47,21 @@ Given /^I am a registered user$/ do
 
 end
 
+When /^I login$/ do
+  steps %Q{
+    Given I am on the login page
+    When I fill in "email" with "mattia@prova.it"
+    And I fill in "password" with "password"
+    And I press "login"
+    Then I should be on the home page
+  }
+end
+
+
+When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |file, field|
+  attach_file(field, "#{Rails.root}/public/" + file)
+end
+
 
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
@@ -115,9 +130,9 @@ When /^(?:|I )choose "([^"]*)"$/ do |field|
   choose(field)
 end
 
-When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
-  attach_file(field, File.expand_path(path))
-end
+#When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
+ # attach_file(field, File.expand_path(path))
+#end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should

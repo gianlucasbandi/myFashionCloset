@@ -24,7 +24,10 @@ module NavigationHelpers
     
     when /^the login page/
       user_session_path
-
+    
+    when /^the personalInfo/
+      users_personalInfo_path
+    
     else
       begin
         page_name =~ /^the (.*) page$/
