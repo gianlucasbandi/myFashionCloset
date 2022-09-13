@@ -30,6 +30,10 @@ module NavigationHelpers
 
     when /^the search/
       search_path
+
+    when /^the becomeCreator/
+      creators_new_path
+      
     else
       begin
         page_name =~ /^the (.*) page$/

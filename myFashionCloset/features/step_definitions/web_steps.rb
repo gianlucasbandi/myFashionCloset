@@ -51,6 +51,41 @@ Given /^I am a registered user$/ do
 
 end
 
+Given /^I am sending my first request to become creator$/ do
+  @user = User.first
+  @user.creator_id = nil
+  @user.save!
+end
+
+Given /^I have already sent my first request to become creator$/ do
+  @user = User.first
+  @creator = Creator.new({
+              :firstName => "CreatorName",
+              :lastName => "CreatorLastName",
+              :birthday => "2002-03-24",
+              :styleDesc => "CreatorMessage",
+              :user_id => @user.id
+              })
+  @creator.save!
+  @user.creator_id = @creator.id
+  @user.save!
+end
+
+Given /^I have sent my request and it has been refused$/ do
+  @user = User.first
+  @creator = Creator.new({
+              :firstName => "CreatorName",
+              :lastName => "CreatorLastName",
+              :birthday => "2002-03-24",
+              :styleDesc => "CreatorMessage",
+              :user_id => @user.id
+              })
+  @user.creat = false
+  @creator.save!
+  @user.creator_id = @creator.id
+  @user.save!
+end
+
 When /^I login$/ do
   steps %Q{
     Given I am on the login page
