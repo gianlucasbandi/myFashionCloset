@@ -13,7 +13,7 @@ Scenario: User send successfully the request
     And I fill in "creator_firstName" with "CreatorName"
     And I fill in "creator_lastName" with "CreatorLastName"
     And I fill in "creator_birthday" with "2002-03-24"
-    #And I check "F" within "creator_gender_f"
+    And I choose "creator_gender_f"
     And I fill in "creator_message" with "CreatorMessage"
     And I press "createSubmit"
     Then I should be on the home page
