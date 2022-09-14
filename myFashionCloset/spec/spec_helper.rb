@@ -13,11 +13,6 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-<<<<<<< HEAD
-
-=======
-require 'support/factory_bot'
->>>>>>> 3f7c15890a27b60a64171281b04f113bbacd40e3
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

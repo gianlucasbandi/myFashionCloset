@@ -19,7 +19,7 @@ RSpec.describe OutfitsController, type: :controller do
                    username: 'user',
                    creat: nil)
 
-                login_as(user, :scope => :user)
+                sign_in user
                 get :new
                 expect(response).to redirect_to(root_path)  #Viene riportata all user_sign
                 expect(flash[:alert]).to be_present
