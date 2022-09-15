@@ -124,7 +124,7 @@ class OutfitsController < ApplicationController
     def create
         @user = current_user
 
-        if @user.creator_id == nil && Creator.find(@user.creator_id).approved != true
+        if @user.creator_id == nil # && Creator.find(@user.creator_id).approved != true
             flash[:alert] = "Only creators can post new outfits"
             redirect_to root_path
 
