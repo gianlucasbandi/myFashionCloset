@@ -187,6 +187,9 @@
                         <div class = "outfit-date">
                             <%=outfit.created_at%>
                         </div>
+                        <div class = "show-outfit">
+                            <a href = "<%=show_outfit_path(outfit.id)%>">Show details</a>
+                        </div>
                     </div>
                 </div>
             <%end%>
@@ -251,6 +254,9 @@
                         </div>
                         <div class = "outfit-date">
                             <%=outfit.created_at%>
+                        </div>
+                        <div class = "show-outfit">
+                            <a href = "<%=show_outfit_path(outfit.id)%>">Show details</a>
                         </div>
                     </div>
                 </div>
