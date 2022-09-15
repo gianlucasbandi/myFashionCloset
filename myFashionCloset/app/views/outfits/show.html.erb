@@ -16,7 +16,14 @@
 
     <!-- My Script -->
     <%= javascript_include_tag "utils" %>
-
+    <script>
+        $(document).ready(()=>{
+            $("#add-btn").on("click",()=>{
+                $("#add-btn").hide();
+            });
+        });
+    </script>
+    
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Logo</a>
@@ -140,6 +147,12 @@
     </div>
 
     <h1>Outfit '<%=@outfit.name%>' by <%=@user.username%></h1>
+
+    <div class = "action">
+        <% if current_user.savedOutfits.where("outfit_id = ?",@outfit.id).size == 0%>
+            <%= button_to "Add to wardrobe",outfits_addSavedOutfit_path, method: :post, class: "btn btn-secondary",params:{outfit_id: @outfit.id},id:"add-btn"%>
+        <%end%>
+    </div>
 </div>
 
 

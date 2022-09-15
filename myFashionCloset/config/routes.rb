@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   post "/outfits/load", to: "outfits#load"  #Get via ajax new outfit to show on the homepage when scrolling down   
   post "outfits/renderHTML/:id", to: "outfits#renderHTML" #Get new loaded outfit html
   delete "/outfits/:id", to: "outfits#destroy"  
+  post "outfits/addSavedOutfit", to: "outfits#addSavedOutfit" 
 
   #-----SearchBar------
   get "/search", to: "search#index"

@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :saved_outfit do
+    user_id { 1 }
+    outfit_id { 1 }
+  end
+
 
     factory :user do
       username {"esempio"}

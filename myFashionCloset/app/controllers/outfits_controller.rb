@@ -177,6 +177,12 @@ class OutfitsController < ApplicationController
         end
     end
 
+
+    def addSavedOutfit
+        savedOutfit = SavedOutfit.new(user_id:current_user.id,outfit_id:params[:outfit_id])
+        savedOutfit.save!
+    end
+
     #Endpoint to search capos without page reload
     def search
         @q = Capo.ransack(params)

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :follows
   has_many :followedCreators, through: :follows, source: :creator
   has_many :reports
+  has_many :savedOutfits
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

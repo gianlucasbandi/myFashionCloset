@@ -5,6 +5,17 @@ class GuardarobasController < ApplicationController
   # GET /guardarobas or /guardarobas.json
   def index
    @guardarobas = Guardaroba.where(user_id: current_user.id)
+
+   @savedOutfits = SavedOutfit.where(user_id: current_user.id)
+   @outfitIds = []
+   @savedOutfits.each do |s| 
+     @outfitIds.push(s.outfit_id)
+   end
+   
+   @user = current_user
+   @outfits = Outfit.where(id:@outfitIds)
+   
+
   end
 
   # GET /guardarobas/1 or /guardarobas/1.json

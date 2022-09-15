@@ -12,6 +12,9 @@
     <!-- Style -->
     <%= stylesheet_link_tag "common.css"%>
 
+    <!-- My Script -->
+    <%= javascript_include_tag "utils" %>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Logo</a>
@@ -127,9 +130,18 @@
   <table>
   <% @guardarobas.each do |guardaroba| %>
   <div id="testo2">
-    <%= image_tag(guardaroba.immagine_capo, size: "130") %><div id="testo3"><br><%=link_to "Buy on #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></div>
+    <%= image_tag(guardaroba.immagine_capo, size: "130",class: "capo-img") %><div id="testo3"><br><%=link_to "Buy on #{guardaroba.sito}", guardaroba.url%><br><br><%= button_to "Remove this item", guardaroba, method: :delete %></div>
   </div>
   <br>
   <% end %>
+  </table>
+
+  <table>
+  <% @outfits.each do |outfit|%>
+    <div id = "testo2">
+        <%=outfit.name%>
+    </div>
+    <br>
+  <%end%>
   </table>
 </div>
