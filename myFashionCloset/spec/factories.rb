@@ -16,8 +16,13 @@ FactoryBot.define do
       lastName {"CreatorLastName"}
       birthday {"2002-03-24"}
       styleDesc {"CreatorMessage"}
-      approved {true}
       user_id {@user.id}
+    end
+
+    factory :outfit do
+      name {"Outfit elegante"}
+      description {"Outfit da sera"}
+      creator_id {@creator.id}
     end
 
 end

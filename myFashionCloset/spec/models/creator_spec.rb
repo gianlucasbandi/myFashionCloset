@@ -23,6 +23,14 @@ RSpec.describe Creator, type: :model do
             expect(@creator).to_not be_valid
           end
         end
+        it "Creator's creation it is valid with all the params" do
+          session = Creator.new(firstName:"name", lastName:"last" , birthday:"2002-03-24", gender:"F", styleDesc:"test", approved:true, user_id: @user.id)
+          expect(session).to be_valid
+        end
+        it "Creator's creation it is not valid without user_id" do
+          session = Creator.new(firstName:"name", lastName:"last" , birthday:"2002-03-24", gender:"F", styleDesc:"test", approved:true)
+          expect(session).to_not be_valid
+        end
     end
 
     describe "Associations" do
