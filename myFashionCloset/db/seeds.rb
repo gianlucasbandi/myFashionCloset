@@ -29,3 +29,11 @@ user3 = User.new(
   :admin => "true"
 )
 user3.save!
+
+user4 = User.new(
+  :email => "contento.1900258@studenti.uniroma1.it",
+  :password => "myFashionCloset",
+  :username => "admin_4",
+  :admin => "true"
+)
+user4.save!
