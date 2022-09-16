@@ -46,11 +46,6 @@
     margin: 0 auto;
 }
 
-.outfit-grid{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
 
 .selection{
     margin-top: 1em;
