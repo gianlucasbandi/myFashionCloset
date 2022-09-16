@@ -143,7 +143,10 @@
         <br>
         <% end %>
     </table>
+     </div>
+</div>
 
+<div id="testo2">
     <div class ="outfit-grid">
         <% @outfits.each do |outfit|%>
             <div class="card text-center outfit followed" id = "<%=outfit.id%>">
@@ -174,9 +177,11 @@
                                     <% outfit.capos.each_with_index do |capo,index| %>
                                         <div class = "carousel-item <%="active" if index == 0%>">
 
-                                            <img class="d-block w-100" src = <%=url_for(capo.immagine)%>>
+                                            <img class="w-50 p-2" src = <%=url_for(capo.immagine)%>>
+                                            <div class="testo-bordato">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h6><%=capo.nome%></h6>
+                                            </div>
                                             </div>
 
                                         </div>
@@ -201,7 +206,8 @@
                         </div>
                     </div>
         <%end%>
-    </div>
+   
+</div>
 </div>
 
 </body>
