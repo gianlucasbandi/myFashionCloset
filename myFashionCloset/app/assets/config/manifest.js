@@ -18,3 +18,5 @@
 //= link_directory ../stylesheets/outfit .css
 
 //= link_directory ../stylesheets/creator .css
+
+//= link guardaroba.js

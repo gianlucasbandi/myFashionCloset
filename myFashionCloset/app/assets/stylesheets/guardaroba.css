@@ -1,4 +1,4 @@
-#testo {
+#testo{
     column-count:3;
     text-align:justify;
     column-fill: inherit;
@@ -44,4 +44,15 @@
     height: 400px;
     padding: 20px;
     margin: 0 auto;
+}
+
+.outfit-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.selection{
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
