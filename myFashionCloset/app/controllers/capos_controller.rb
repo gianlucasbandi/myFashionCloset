@@ -3,6 +3,8 @@ class CaposController < ApplicationController
 
   # GET /capos or /capos.json
   def index
+    authorize! :read, Capo, :message => "BEWARE: you are not
+        authorized to access this page"
     if Articolo.save_top_popular_articles
       @message = 'Succeed'
     else
@@ -11,6 +13,7 @@ class CaposController < ApplicationController
     @q = Capo.ransack(params[:q])
     #@capos = Capo.all
     @capos = @q.result(distinct: true)
+    
   end
 
   private
