@@ -149,7 +149,7 @@
     <h1>Outfit '<%=@outfit.name%>' by <%=@user.username%></h1>
 
     <div class = "action">
-        <% if current_user.savedOutfits.where("outfit_id = ?",@outfit.id).size == 0%>
+        <% if current_user.savedOutfits.where("outfit_id = ?",@outfit.id).size == 0 && !current_user.admin?%>
             <%= button_to "Add to wardrobe",outfits_addSavedOutfit_path, method: :post, class: "btn btn-secondary",params:{outfit_id: @outfit.id},id:"add-btn"%>
         <%end%>
     </div>
