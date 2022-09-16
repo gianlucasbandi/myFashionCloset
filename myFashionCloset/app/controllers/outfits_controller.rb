@@ -105,7 +105,7 @@ class OutfitsController < ApplicationController
                 '+@outfit.created_at.to_s+'
             </div>
             <div class = "show-outfit">
-                <a href = '+show_outfit_path(outfit.id)+'>Show details</a>
+                <a href = '+show_outfit_path(@outfit.id)+'>Show details</a>
             </div>
         </div>
     </div>'

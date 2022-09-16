@@ -202,6 +202,7 @@
                         <div class="card-footer text-muted">
                             <div class = "show-outfit">
                                 <a href = "<%=show_outfit_path(outfit.id)%>">Show details</a>
+                                <%= button_to "Remove this item",guardaroba_remove_outfit_path(outfit.id),method: :post %>
                             </div>
                         </div>
                     </div>

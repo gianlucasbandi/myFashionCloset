@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post "/guardarobas", to: "guardarobas#create" 
   get "/guardarobas/:id", to: "guardarobas#show", as: "guardaroba"
   delete "/guardarobas/:id", to: "guardarobas#destroy"
-  
+  post "guardarobas/removeOutfit/:id", to: "guardarobas#removeOutfit", as:  "guardaroba_remove_outfit"
+
   #------Creators--------
   get "/creators/new", to: "creators#new"
   post "/creators/new", to: "creators#create"
