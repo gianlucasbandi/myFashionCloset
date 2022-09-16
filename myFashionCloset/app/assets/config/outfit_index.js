@@ -6,10 +6,19 @@ $(document).ready(()=>{
             if(working == false){
                 working = true;
                 var last = $("#main .card:last").attr("id");        //Getting last outfit loaded in main
+                var ids = [];
+
+                //console.log($("#main .card"));
+
+                $("#main .card").each(function(){
+                    //alert($(this).attr("id"));
+                    ids.push($(this).attr("id"));
+                });
+
                 $.ajax({
                     type:"post",
                     url: "/outfits/load",
-                    data: {"last":last,"lastIsFollowed":$("#main .card:last").hasClass("followed")},
+                    data: {"last":last,"lastIsFollowed":$("#main .card:last").hasClass("followed"),OutfitIds:ids},
                     credentials: "same-origin",
                     headers: {
                         "X-CSRF-Token": getMetaValue("csrf-token")

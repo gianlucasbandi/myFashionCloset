@@ -35,7 +35,8 @@ class OutfitsController < ApplicationController
             end
         end
 
-        @recentOutfits = Outfit.where("id < ?",params[:last]).order(created_at: :desc).take(3)
+        puts(params)
+        @recentOutfits = Outfit.where.not(id:params[:OutfitIds]).order(created_at: :desc).take(3)
         render json: [@recentOutfits,false]
     end
 
