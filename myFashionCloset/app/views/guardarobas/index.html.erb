@@ -143,14 +143,17 @@
         <br>
         <% end %>
     </table>
+     </div>
+</div>
 
-    <div class ="outfit-grid">
+<div class = "outfit">
+    
         <% @outfits.each do |outfit|%>
             <div class="card text-center outfit followed" id = "<%=outfit.id%>">
                         <div class="card-header">
                             <div class = "profile-pic">
                                 <a href = "<%=creator_path(outfit.creator.id)%>">
-                                    <% if outfit.creator.user.avatar != nil %>
+                                    <% if outfit.creator.user.avatar.attached?  %>
                                         <img data-enlargable class = "avatar" src="<%=(url_for(outfit.creator.user.avatar))%>">
                                     <%else%>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -174,9 +177,11 @@
                                     <% outfit.capos.each_with_index do |capo,index| %>
                                         <div class = "carousel-item <%="active" if index == 0%>">
 
-                                            <img class="d-block w-100" src = <%=url_for(capo.immagine)%>>
+                                            <img class="w-50 p-2" src = <%=url_for(capo.immagine)%>>
+                                            <div class="testo-bordato">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h6><%=capo.nome%></h6>
+                                            </div>
                                             </div>
 
                                         </div>
@@ -197,11 +202,13 @@
                         <div class="card-footer text-muted">
                             <div class = "show-outfit">
                                 <a href = "<%=show_outfit_path(outfit.id)%>">Show details</a>
+                                <%= button_to "Remove this item",guardaroba_remove_outfit_path(outfit.id),method: :post %>
                             </div>
                         </div>
                     </div>
         <%end%>
-    </div>
+   
+    
 </div>
 
 </body>

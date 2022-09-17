@@ -136,7 +136,7 @@
                     <div class="card-header">
                         <div class = "profile-pic">
                             <a href = "<%=creator_path(outfit.creator.id)%>">
-                                <% if outfit.creator.user.avatar != nil %>
+                                <%if outfit.creator.user.avatar.attached?  %>
                                     <img data-enlargable class = "avatar" src="<%=(url_for(outfit.creator.user.avatar))%>">
                                 <%else%>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -162,7 +162,9 @@
 
                                         <img class="d-block w-100" src = <%=url_for(capo.immagine)%>>
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h6><%=capo.nome%></h6>
+                                            <div class="testo-bordato">
+                                              <%=capo.nome%>
+                                            </div>
                                         </div>
 
                                     </div>

@@ -35,7 +35,8 @@ class OutfitsController < ApplicationController
             end
         end
 
-        @recentOutfits = Outfit.where("id < ?",params[:last]).order(created_at: :desc).take(3)
+        puts(params)
+        @recentOutfits = Outfit.where.not(id:params[:OutfitIds]).order(created_at: :desc).take(3)
         render json: [@recentOutfits,false]
     end
 
@@ -105,7 +106,7 @@ class OutfitsController < ApplicationController
                 '+@outfit.created_at.to_s+'
             </div>
             <div class = "show-outfit">
-                <a href = '+show_outfit_path(outfit.id)+'>Show details</a>
+                <a href = '+show_outfit_path(@outfit.id)+'>Show details</a>
             </div>
         </div>
     </div>'

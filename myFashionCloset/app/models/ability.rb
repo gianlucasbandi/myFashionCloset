@@ -5,21 +5,32 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     if user.admin?
-      can :manage, :all
+      cannot :read, Capo
+      cannot :manage, Guardaroba
+      can [:read, :create, :destroy], Creator
+      can [:read, :destroy], Outfit
+      cannot [:create], Outfit
+      can [:create, :destroy], Report
+      can :manage, Admin
     elsif user.creat?
-      can :manage, Capo
-      can :manage, Guardaroba
-      can [:read, :create, :update], Creator
+      can :read, Capo
+      can [:read, :create], Guardaroba
+      can [:read, :Create], Creator
       cannot :destroy, Creator
-      can :manage, Outfit
+      can [:read, :create], Outfit
+      cannot [:destroy], Outfit
+      can :create, Report
+      cannot :destroy, Report
       cannot :manage, Admin
     else
-      can :manage, Capo
-      can :manage, Guardaroba
+      can :read, Capo
+      can [:read, :create], Guardaroba
       can [:read, :create], Creator
       cannot :destroy, Creator
       can :read, Outfit
-      cannot [:create, :update, :destroy], Outfit
+      cannot [:create, :destroy], Outfit
+      can :create, Report
+      cannot :destroy, Report
       cannot :manage, Admin
     end
     #
