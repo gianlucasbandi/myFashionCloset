@@ -27,9 +27,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <% if user_signed_in?%>
+            <ul class="navbar-nav">            
                     <a href="<%=root_path%>">Home</a>
+                    <% if user_signed_in?%>
                     <% if !current_user.admin? %>
                         <a href="<%=capos_path%>">Items</a>
                     <%end%>
@@ -161,7 +161,7 @@
           </div>
 
           <div class = "creator-action" id= "<%=@creator.id%>">
-            <% if @current_user!=nil && @current_user.id != @creator.user_id%>
+            <% if @current_user!=nil && @current_user.id != @creator.user_id && !@current_user.admin?%>
               <% if @followed%>
                   <button id ="unfollow-btn"  class = "btn btn-secondary" >Unfollow</button>
                   <button id ="follow-btn" class = "btn btn-secondary" style = "display:none">Follow</button>
@@ -172,7 +172,9 @@
               <%end%>
             <%else %>
             <%end%>
+            <%if user_signed_in? && !current_user.admin? && current_user.creator_id != @creator.id%>
               &nbsp;&nbsp;<button  data-toggle="modal" data-target="#modalReport" class = "btn btn-danger">Report</button>
+            <%end%>
           </div>
         
 
@@ -189,7 +191,9 @@
 
                               <img class="d-block w-150" src = <%=url_for(capo.immagine)%>>
                               <div class="carousel-caption d-none d-md-block">
+                                <div class="testo-bordato">
                                   <h6><%=capo.nome%></h6>
+                                </div>
                               </div>
 
                           </div>

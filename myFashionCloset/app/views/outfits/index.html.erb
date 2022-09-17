@@ -33,8 +33,8 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <% if user_signed_in?%>
                     <a href="<%=root_path%>">Home</a>
+                    <% if user_signed_in?%>
                     <% if !current_user.admin? %>
                         <a href="<%=capos_path%>">Items</a>
                     <%end%>
