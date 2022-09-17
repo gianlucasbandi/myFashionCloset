@@ -41,7 +41,7 @@ $(document).ready(()=>{
             $.ajax({
                 type:"post",
                 url: "/searchoutfit",
-                data: {"q":{"username_cont":nameo}},           //q[username_cont]
+                data: {"q":{"name_cont":nameo}},           //q[username_cont]
                 credentials: "same-origin",
                 headers: {
                     "X-CSRF-Token": getMetaValue("csrf-token")
