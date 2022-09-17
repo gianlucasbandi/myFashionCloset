@@ -10,7 +10,7 @@ class Ability
       can [:read, :create, :destroy], Creator
       can [:read, :destroy], Outfit
       cannot [:create], Outfit
-      can [:create, :destroy], Report
+      can [:destroy], Report
       can :manage, Admin
     elsif user.creat?
       can :read, Capo
