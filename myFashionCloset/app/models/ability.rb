@@ -14,7 +14,7 @@ class Ability
       can :manage, Admin
     elsif user.creat?
       can :read, Capo
-      can [:read, :create], Guardaroba
+      can [:read, :create, :destroy], Guardaroba
       can [:read, :Create], Creator
       cannot :destroy, Creator
       can [:read, :create], Outfit
@@ -24,7 +24,7 @@ class Ability
       cannot :manage, Admin
     else
       can :read, Capo
-      can [:read, :create], Guardaroba
+      can [:read, :create, :destroy], Guardaroba
       can [:read, :create], Creator
       cannot :destroy, Creator
       can :read, Outfit

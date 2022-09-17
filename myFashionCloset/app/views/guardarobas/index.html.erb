@@ -128,7 +128,7 @@
 <h1>&nbsp;<%= current_user.username%>'s Wardrobe</h1>
 <br>
 <div class = "selection">
-    <button class="btn disabled" id="capo-btn">Show capos</button>
+    &nbsp;&nbsp;<button class="btn disabled" id="capo-btn">Show capos</button>
     <button class="btn" id = "outfit-btn">Show outfits</button>
 </div>
 
@@ -146,7 +146,8 @@
      </div>
 </div>
 
-<div class = "outfit">
+<div id="testo3">
+<div class = "outfit2">
     
         <% @outfits.each do |outfit|%>
             <div class="card text-center outfit followed" id = "<%=outfit.id%>">
@@ -206,10 +207,12 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <br>
         <%end%>
    
     
 </div>
-
+</div>
 </body>
 </html>
