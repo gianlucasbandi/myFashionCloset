@@ -14,7 +14,7 @@ class Articolo
         #woman main Forever 21
         t1 = Thread.new{
             begin
-                response = HTTP.timeout(10).get("https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&category=woman_main&pageSize=15&pageNumber=1&sortby=0")
+                response = HTTP.timeout(10).get("https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&category=woman_main&pageSize=15&pageNumber=1&sortby=0")
             rescue => e
                 return false
             end
@@ -39,7 +39,7 @@ class Articolo
             #nuovi Arrivi Forever 21
         
             begin
-                response = HTTP.timeout(10).get("https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&category=women_new_arrivals_clothing&pageSize=15&pageNumber=2&sortby=0")
+                response = HTTP.timeout(10).get("https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&category=women_new_arrivals_clothing&pageSize=15&pageNumber=2&sortby=0")
             rescue => e
                 return false
             end
@@ -65,7 +65,7 @@ class Articolo
         #Nuovi Arrivi Asos
         t2 = Thread.new{
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=2623&categoryId=25423&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=2623&categoryId=25423&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -92,7 +92,7 @@ class Articolo
             #Accessori Asos
      
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=25423&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=25423&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -119,7 +119,7 @@ class Articolo
         #Pants e leggins Asos
         t3 = Thread.new{
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=27420&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=27420&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -145,7 +145,7 @@ class Articolo
             #Shoes ASOS
         
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=27416&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=27416&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -172,7 +172,7 @@ class Articolo
         #Sweaters e cardigans ASOS
         t4 = Thread.new{
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=27409&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=27409&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -199,7 +199,7 @@ class Articolo
             #Jeans ASOS
         
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=27405&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=27405&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -225,7 +225,7 @@ class Articolo
         #Hoodies & Sweatshirts ASOS
         t5 = Thread.new{
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=27423&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=27423&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
@@ -251,7 +251,7 @@ class Articolo
             #Dresses ASOS
         
             begin
-                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=2ecf0e3a13msh4b3c0db5f9bc45dp16a1fajsnb15005bf3b7d&store=US&offset=0&categoryId=27399&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
+                response = HTTP.timeout(10).get("https://asos2.p.rapidapi.com/products/v2/list?rapidapi-key=3dfed89925msh97b715da7689ea4p134ae2jsne04d3a93e2a5&store=US&offset=0&categoryId=27399&limit=8&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US")
             rescue => e
                 return false
             end
