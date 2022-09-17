@@ -11,4 +11,10 @@ class SearchController < ApplicationController
         render json:  @creators;
     end
 
+    def updateoutfit
+        @query = Outfit.ransack(params[:q])
+        @outfits = @query.result(distinct:true)
+        render json:  @outfits;
+    end
+
 end

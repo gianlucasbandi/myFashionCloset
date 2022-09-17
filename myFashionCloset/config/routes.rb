@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   #-----SearchBar------
   get "/search", to: "search#index"
   post "/search", to: "search#update"
-  
+  post "/searchoutfit", to: "search#updateoutfit"
   
   #-----Home Page--------
   root "outfits#index"

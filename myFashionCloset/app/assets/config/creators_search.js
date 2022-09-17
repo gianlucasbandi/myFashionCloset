@@ -1,9 +1,11 @@
 $(document).ready(()=>{
     $search_btn = $("#search-btn");
     $contentDiv = $(".content-body");
+    $contentDivOut = $(".content-body-outfit");
     $search_input = $("#search-input");
+    $search_input_out = $("#search-input-outfit");
     $contentDiv.empty();
-
+    $contentDivOut.empty();
 
     $search_input.on("input",(event)=>{
         //event.preventDefault();
@@ -32,6 +34,32 @@ $(document).ready(()=>{
         }
     });
 
+    $search_input_out.on("input",(event)=>{
+        //event.preventDefault();
+        var nameo = $search_input_out.val();
+        if(nameo != ""){
+            $.ajax({
+                type:"post",
+                url: "/searchoutfit",
+                data: {"q":{"username_cont":nameo}},           //q[username_cont]
+                credentials: "same-origin",
+                headers: {
+                    "X-CSRF-Token": getMetaValue("csrf-token")
+                },
+                success: (result)=>{
+                    $contentDivOut.empty();
+                    for(i = 0;i<result.length;i++){
+                        $newItem = $('<div class = "content-item"><div class = "username-item"><p>'+result[i].name+'</p></div>\
+                        <div class="show-item"><a href= http://localhost:3000/outfits/'+result[i].id+'> Show outfit</a></div></div>');
+                        $contentDivOut.prepend($newItem);
+                    }
+                }
+            });
+        }
+        else{
+            $contentDivOut.empty();
+        }
+    });
 
 
     
